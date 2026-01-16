@@ -1,0 +1,34 @@
+/* Slider track styles */
+@layer components {
+	input[type="range"].juno-slider {
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		appearance: none;
+		background: transparent;
+		cursor: pointer;
+	}
+
+	input[type="range"].juno-slider::-webkit-slider-runnable-track {
+		background: var(--slider-track-bg);
+		border-radius: var(--slider-track-radius, 9999px);
+		height: 100%;
+	}
+
+	input[type="range"].juno-slider::-moz-range-track {
+		background: var(--slider-track-bg);
+		border-radius: var(--slider-track-radius, 9999px);
+		height: 100%;
+	}
+
+	input[type="range"].juno-slider::-webkit-slider-thumb {
+		width: var(--slider-thumb-size);
+		height: var(--slider-thumb-size);
+		margin-top: calc((var(--slider-track-height) - var(--slider-thumb-size)) / 2);
+	}
+
+	input[type="range"].juno-slider::-moz-range-thumb {
+		width: var(--slider-thumb-size);
+		height: var(--slider-thumb-size);
+		border: none;
+	}
+}

@@ -1,0 +1,148 @@
+@layer components {
+	/* Default alert styles */
+	.juno-alert {
+		display: flex;
+		position: relative;
+		box-sizing: border-box;
+		max-width: 100%;
+		transition: all 75ms ease-in-out;
+		white-space: normal;
+
+		/* Size - uses inherited --alert-* or falls back to medium */
+		padding: var(--alert-padding, 1rem);
+		gap: var(--alert-gap, 0.625rem);
+		font-size: var(--alert-font-size, var(--text-sm));
+		line-height: var(--alert-line-height, var(--text-sm--line-height));
+		border-radius: var(--alert-radius, var(--border-radius-md));
+	}
+
+	/* Direction variants */
+	.juno-alert-row {
+		flex-direction: row;
+	}
+
+	.juno-alert-column {
+		flex-direction: column;
+	}
+
+	/* Size variants */
+	.juno-elements-small .juno-alert,
+	.juno-alert-small {
+		--alert-padding: 0.5rem;
+		--alert-gap: 0.375rem;
+		--alert-font-size: var(--text-xs);
+		--alert-line-height: var(--text-xs--line-height);
+		--alert-radius: var(--border-radius-sm);
+	}
+
+	.juno-elements-medium .juno-alert,
+	.juno-alert-medium {
+		--alert-padding: 1rem;
+		--alert-gap: 0.625rem;
+		--alert-font-size: var(--text-sm);
+		--alert-line-height: var(--text-sm--line-height);
+		--alert-radius: var(--border-radius-md);
+	}
+
+	/* Light variant */
+	.juno-alert-light {
+		background: var(--juno-alert-surface);
+		color: var(--juno-alert-text-color);
+		outline: 0.5px solid var(--juno-alert-outline);
+		outline-offset: -0.5px;
+	}
+
+	/* Soft variant */
+	.juno-alert-soft {
+		background: var(--juno-alert-surface-soft);
+		color: var(--juno-alert-text-color);
+	}
+
+	/* Solid variant */
+	.juno-alert-solid {
+		background: var(--juno-alert-solid-bg);
+		color: var(--juno-alert-solid-text);
+	}
+
+	/* Outline variant */
+	.juno-alert-outline {
+		background: transparent;
+		color: var(--juno-alert-text-color);
+		outline: 1px solid var(--juno-alert-focus);
+		outline-offset: -1px;
+	}
+
+	/* Color: base-0 */
+	.juno-alert-base-0 {
+		--juno-alert-surface: var(--base-0);
+		--juno-alert-surface-soft: var(--base-50);
+		--juno-alert-text-color: var(--base-content);
+		--juno-alert-outline: color-mix(in srgb, var(--base-500) 50%, transparent);
+		--juno-alert-focus: var(--base-300);
+		--juno-alert-solid-bg: var(--base-0);
+		--juno-alert-solid-text: var(--base-content);
+	}
+
+	.juno-alert-base-0.juno-alert-outline {
+		color: var(--base-600);
+	}
+
+	/* Color: info */
+	.juno-alert-info {
+		--juno-alert-surface: var(--info-surface);
+		--juno-alert-surface-soft: color-mix(in srgb, var(--info-surface) 80%, transparent);
+		--juno-alert-text-color: var(--info-content);
+		--juno-alert-outline: color-mix(in srgb, var(--info-focus) 50%, transparent);
+		--juno-alert-focus: var(--info-focus);
+		--juno-alert-solid-bg: var(--info);
+		--juno-alert-solid-text: var(--base-0);
+	}
+
+	/* Color: error */
+	.juno-alert-error {
+		--juno-alert-surface: var(--error-surface);
+		--juno-alert-surface-soft: color-mix(in srgb, var(--error-surface) 80%, transparent);
+		--juno-alert-text-color: var(--error-content);
+		--juno-alert-outline: color-mix(in srgb, var(--error-focus) 50%, transparent);
+		--juno-alert-focus: var(--error-focus);
+		--juno-alert-solid-bg: var(--error);
+		--juno-alert-solid-text: var(--base-0);
+	}
+
+	/* Color: warning */
+	.juno-alert-warning {
+		--juno-alert-surface: var(--warning-surface);
+		--juno-alert-surface-soft: color-mix(in srgb, var(--warning-surface) 80%, transparent);
+		--juno-alert-text-color: var(--warning-content);
+		--juno-alert-outline: color-mix(in srgb, var(--warning-focus) 50%, transparent);
+		--juno-alert-focus: var(--warning-focus);
+		--juno-alert-solid-bg: var(--warning);
+		--juno-alert-solid-text: var(--base-0);
+	}
+
+	/* Color: success */
+	.juno-alert-success {
+		--juno-alert-surface: var(--success-surface);
+		--juno-alert-surface-soft: color-mix(in srgb, var(--success-surface) 80%, transparent);
+		--juno-alert-text-color: var(--success-content);
+		--juno-alert-outline: color-mix(in srgb, var(--success-focus) 50%, transparent);
+		--juno-alert-focus: var(--success-focus);
+		--juno-alert-solid-bg: var(--success);
+		--juno-alert-solid-text: var(--base-0);
+	}
+
+	/* No color (inherit/current) */
+	.juno-alert-inherit {
+		--juno-alert-surface: color-mix(in srgb, currentColor 5%, transparent);
+		--juno-alert-surface-soft: color-mix(in srgb, currentColor 5%, transparent);
+		--juno-alert-text-color: inherit;
+		--juno-alert-outline: color-mix(in srgb, currentColor 30%, transparent);
+		--juno-alert-focus: currentColor;
+		--juno-alert-solid-bg: color-mix(in srgb, currentColor 10%, transparent);
+		--juno-alert-solid-text: var(--base-0);
+	}
+
+	.juno-alert-inherit.juno-alert-solid {
+		color: var(--base-0);
+	}
+}

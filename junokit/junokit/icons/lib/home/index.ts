@@ -1,0 +1,10 @@
+export { Bed } from "./Bed";
+export { Box } from "./Box";
+export { Desk } from "./Desk";
+export { Drawer } from "./Drawer";
+export { Fridge } from "./Fridge";
+export { Home } from "./Home";
+export { Lamp } from "./Lamp";
+export { Laundry } from "./Laundry";
+export { LightBulb } from "./LightBulb";
+export { Sofa } from "./Sofa";

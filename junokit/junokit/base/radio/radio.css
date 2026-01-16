@@ -1,0 +1,602 @@
+.juno-radio-wrapper {
+	position: relative;
+	flex-shrink: 0;
+	width: fit-content;
+	cursor: pointer;
+}
+
+.juno-radio-input {
+	position: absolute;
+	inset: 0;
+	opacity: 0;
+	cursor: pointer;
+}
+
+.juno-radio {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	pointer-events: none;
+	transition: all 75ms ease-in-out;
+	width: var(--radio-size, 1.125rem);
+	height: var(--radio-size, 1.125rem);
+	border-radius: 9999px;
+}
+
+.juno-radio-dot {
+	width: 45%;
+	height: 45%;
+	border-radius: 9999px;
+	transition: all 50ms ease-in-out;
+	transform: scale(0);
+}
+
+.juno-radio-checked .juno-radio-dot {
+	transform: scale(1);
+}
+
+/* Native :checked support for uncontrolled radios */
+.juno-radio-wrapper:has(.juno-radio-input:checked) .juno-radio-dot {
+	transform: scale(1);
+}
+
+/* ==================== */
+/* ACTIVE STATE         */
+/* ==================== */
+.juno-radio-wrapper:active .juno-radio-dot {
+	transform: scale(0.9) translateY(1px);
+}
+
+.juno-radio-wrapper:has(.juno-radio-input:checked):active .juno-radio-dot,
+.juno-radio-checked:active .juno-radio-dot {
+	transform: scale(0.9) translateY(1px);
+}
+
+/* Element size inheritance - allows parent containers to control radio size */
+.juno-elements-small {
+	--radio-size: 1rem;
+	--radio-item-gap: 0.375rem;
+	--radio-item-font-size: var(--text-xs);
+}
+
+.juno-elements-medium {
+	--radio-size: 1.125rem;
+	--radio-item-gap: 0.5rem;
+	--radio-item-font-size: var(--text-sm);
+}
+
+.juno-elements-large {
+	--radio-size: 1.25rem;
+	--radio-item-gap: 0.75rem;
+	--radio-item-font-size: var(--text-base);
+}
+
+/* Size variants - direct application */
+.juno-radio-sm {
+	--radio-size: 1rem;
+}
+
+.juno-radio-md {
+	--radio-size: 1.125rem;
+}
+
+.juno-radio-lg {
+	--radio-size: 1.25rem;
+}
+
+/* ==================== */
+/* RADIO ITEM           */
+/* ==================== */
+.juno-radio-item {
+	display: inline-flex;
+	align-items: center;
+	cursor: pointer;
+	gap: var(--radio-item-gap, 0.5rem);
+	font-size: var(--radio-item-font-size, var(--text-sm));
+}
+
+.juno-radio-item-sm {
+	--radio-size: 1rem;
+	--radio-item-gap: 0.375rem;
+	--radio-item-font-size: var(--text-xs);
+}
+
+.juno-radio-item-md {
+	--radio-size: 1.125rem;
+	--radio-item-gap: 0.5rem;
+	--radio-item-font-size: var(--text-sm);
+}
+
+.juno-radio-item-lg {
+	--radio-size: 1.25rem;
+	--radio-item-gap: 0.75rem;
+	--radio-item-font-size: var(--text-base);
+}
+
+/* ==================== */
+/* SOLID VARIANT        */
+/* ==================== */
+.juno-radio-solid {
+	background-color: var(--base-0);
+	outline: 1px solid color-mix(in srgb, var(--base-content) 20%, transparent);
+	outline-offset: -1px;
+}
+
+.juno-radio-wrapper:hover .juno-radio-solid {
+	outline-color: color-mix(in srgb, var(--base-content) 35%, transparent);
+}
+
+.juno-radio-solid.juno-radio-checked,
+.juno-radio-wrapper:has(.juno-radio-input:checked) .juno-radio-solid {
+	background-color: currentColor;
+	outline-color: currentColor;
+}
+
+.juno-radio-wrapper:hover .juno-radio-solid.juno-radio-checked,
+.juno-radio-wrapper:has(.juno-radio-input:checked):hover .juno-radio-solid {
+	filter: brightness(1.1);
+}
+
+.juno-radio-solid .juno-radio-dot {
+	background-color: var(--base-0);
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Solid + color variants checked */
+.juno-radio-solid.juno-radio-primary.juno-radio-checked,
+.juno-radio-wrapper:has(.juno-radio-input:checked) .juno-radio-solid.juno-radio-primary {
+	background-color: var(--primary);
+	outline-color: var(--primary);
+}
+
+.juno-radio-solid.juno-radio-accent.juno-radio-checked,
+.juno-radio-wrapper:has(.juno-radio-input:checked) .juno-radio-solid.juno-radio-accent {
+	background-color: var(--accent);
+	outline-color: var(--accent);
+}
+
+.juno-radio-solid.juno-radio-error.juno-radio-checked,
+.juno-radio-wrapper:has(.juno-radio-input:checked) .juno-radio-solid.juno-radio-error {
+	background-color: var(--error);
+	outline-color: var(--error);
+}
+
+.juno-radio-solid.juno-radio-success.juno-radio-checked,
+.juno-radio-wrapper:has(.juno-radio-input:checked) .juno-radio-solid.juno-radio-success {
+	background-color: var(--success);
+	outline-color: var(--success);
+}
+
+.juno-radio-solid.juno-radio-warning.juno-radio-checked,
+.juno-radio-wrapper:has(.juno-radio-input:checked) .juno-radio-solid.juno-radio-warning {
+	background-color: var(--warning);
+	outline-color: var(--warning);
+}
+
+.juno-radio-solid.juno-radio-info.juno-radio-checked,
+.juno-radio-wrapper:has(.juno-radio-input:checked) .juno-radio-solid.juno-radio-info {
+	background-color: var(--info);
+	outline-color: var(--info);
+}
+
+/* ==================== */
+/* LIGHT VARIANT        */
+/* ==================== */
+.juno-radio-light {
+	background-color: transparent;
+	outline: 1px solid color-mix(in srgb, var(--base-content) 20%, transparent);
+	outline-offset: -1px;
+}
+
+.juno-radio-wrapper:hover .juno-radio-light {
+	background-color: color-mix(in srgb, var(--base-content) 5%, transparent);
+	outline-color: color-mix(in srgb, var(--base-content) 30%, transparent);
+}
+
+.juno-radio-light.juno-radio-checked,
+.juno-radio-wrapper:has(.juno-radio-input:checked) .juno-radio-light {
+	background-color: color-mix(in srgb, currentColor 15%, transparent);
+	outline-color: color-mix(in srgb, currentColor 40%, transparent);
+}
+
+.juno-radio-wrapper:hover .juno-radio-light.juno-radio-checked,
+.juno-radio-wrapper:has(.juno-radio-input:checked):hover .juno-radio-light {
+	background-color: color-mix(in srgb, currentColor 20%, transparent);
+	outline-color: color-mix(in srgb, currentColor 50%, transparent);
+}
+
+.juno-radio-light .juno-radio-dot {
+	background-color: currentColor;
+}
+
+/* Light + color variants checked */
+.juno-radio-light.juno-radio-primary.juno-radio-checked,
+.juno-radio-wrapper:has(.juno-radio-input:checked) .juno-radio-light.juno-radio-primary {
+	background-color: color-mix(in srgb, var(--primary) 15%, transparent);
+	outline-color: color-mix(in srgb, var(--primary) 40%, transparent);
+}
+
+.juno-radio-light.juno-radio-primary .juno-radio-dot {
+	background-color: var(--primary);
+}
+
+.juno-radio-light.juno-radio-accent.juno-radio-checked,
+.juno-radio-wrapper:has(.juno-radio-input:checked) .juno-radio-light.juno-radio-accent {
+	background-color: color-mix(in srgb, var(--accent) 15%, transparent);
+	outline-color: color-mix(in srgb, var(--accent) 40%, transparent);
+}
+
+.juno-radio-light.juno-radio-accent .juno-radio-dot {
+	background-color: var(--accent);
+}
+
+.juno-radio-light.juno-radio-error.juno-radio-checked,
+.juno-radio-wrapper:has(.juno-radio-input:checked) .juno-radio-light.juno-radio-error {
+	background-color: color-mix(in srgb, var(--error) 15%, transparent);
+	outline-color: color-mix(in srgb, var(--error) 40%, transparent);
+}
+
+.juno-radio-light.juno-radio-error .juno-radio-dot {
+	background-color: var(--error);
+}
+
+.juno-radio-light.juno-radio-success.juno-radio-checked,
+.juno-radio-wrapper:has(.juno-radio-input:checked) .juno-radio-light.juno-radio-success {
+	background-color: color-mix(in srgb, var(--success) 15%, transparent);
+	outline-color: color-mix(in srgb, var(--success) 40%, transparent);
+}
+
+.juno-radio-light.juno-radio-success .juno-radio-dot {
+	background-color: var(--success);
+}
+
+.juno-radio-light.juno-radio-warning.juno-radio-checked,
+.juno-radio-wrapper:has(.juno-radio-input:checked) .juno-radio-light.juno-radio-warning {
+	background-color: color-mix(in srgb, var(--warning) 15%, transparent);
+	outline-color: color-mix(in srgb, var(--warning) 40%, transparent);
+}
+
+.juno-radio-light.juno-radio-warning .juno-radio-dot {
+	background-color: var(--warning);
+}
+
+.juno-radio-light.juno-radio-info.juno-radio-checked,
+.juno-radio-wrapper:has(.juno-radio-input:checked) .juno-radio-light.juno-radio-info {
+	background-color: color-mix(in srgb, var(--info) 15%, transparent);
+	outline-color: color-mix(in srgb, var(--info) 40%, transparent);
+}
+
+.juno-radio-light.juno-radio-info .juno-radio-dot {
+	background-color: var(--info);
+}
+
+/* ==================== */
+/* SOFT VARIANT         */
+/* ==================== */
+.juno-radio-soft {
+	background-color: color-mix(in srgb, var(--base-content) 8%, transparent);
+	outline: none;
+}
+
+.juno-radio-wrapper:hover .juno-radio-soft {
+	background-color: color-mix(in srgb, var(--base-content) 12%, transparent);
+}
+
+.juno-radio-soft.juno-radio-checked,
+.juno-radio-wrapper:has(.juno-radio-input:checked) .juno-radio-soft {
+	background-color: color-mix(in srgb, currentColor 20%, transparent);
+}
+
+.juno-radio-wrapper:hover .juno-radio-soft.juno-radio-checked,
+.juno-radio-wrapper:has(.juno-radio-input:checked):hover .juno-radio-soft {
+	background-color: color-mix(in srgb, currentColor 28%, transparent);
+}
+
+.juno-radio-soft .juno-radio-dot {
+	background-color: currentColor;
+}
+
+/* Soft + color variants checked */
+.juno-radio-soft.juno-radio-primary.juno-radio-checked,
+.juno-radio-wrapper:has(.juno-radio-input:checked) .juno-radio-soft.juno-radio-primary {
+	background-color: color-mix(in srgb, var(--primary) 20%, transparent);
+}
+
+.juno-radio-soft.juno-radio-primary .juno-radio-dot {
+	background-color: var(--primary);
+}
+
+.juno-radio-soft.juno-radio-accent.juno-radio-checked,
+.juno-radio-wrapper:has(.juno-radio-input:checked) .juno-radio-soft.juno-radio-accent {
+	background-color: color-mix(in srgb, var(--accent) 20%, transparent);
+}
+
+.juno-radio-soft.juno-radio-accent .juno-radio-dot {
+	background-color: var(--accent);
+}
+
+.juno-radio-soft.juno-radio-error.juno-radio-checked,
+.juno-radio-wrapper:has(.juno-radio-input:checked) .juno-radio-soft.juno-radio-error {
+	background-color: color-mix(in srgb, var(--error) 20%, transparent);
+}
+
+.juno-radio-soft.juno-radio-error .juno-radio-dot {
+	background-color: var(--error);
+}
+
+.juno-radio-soft.juno-radio-success.juno-radio-checked,
+.juno-radio-wrapper:has(.juno-radio-input:checked) .juno-radio-soft.juno-radio-success {
+	background-color: color-mix(in srgb, var(--success) 20%, transparent);
+}
+
+.juno-radio-soft.juno-radio-success .juno-radio-dot {
+	background-color: var(--success);
+}
+
+.juno-radio-soft.juno-radio-warning.juno-radio-checked,
+.juno-radio-wrapper:has(.juno-radio-input:checked) .juno-radio-soft.juno-radio-warning {
+	background-color: color-mix(in srgb, var(--warning) 20%, transparent);
+}
+
+.juno-radio-soft.juno-radio-warning .juno-radio-dot {
+	background-color: var(--warning);
+}
+
+.juno-radio-soft.juno-radio-info.juno-radio-checked,
+.juno-radio-wrapper:has(.juno-radio-input:checked) .juno-radio-soft.juno-radio-info {
+	background-color: color-mix(in srgb, var(--info) 20%, transparent);
+}
+
+.juno-radio-soft.juno-radio-info .juno-radio-dot {
+	background-color: var(--info);
+}
+
+/* ==================== */
+/* NATIVE VARIANT       */
+/* ==================== */
+.juno-radio-native {
+	cursor: pointer;
+	width: var(--radio-size, 1.125rem);
+	height: var(--radio-size, 1.125rem);
+}
+
+.juno-radio-native-sm {
+	--radio-size: 1rem;
+}
+
+.juno-radio-native-md {
+	--radio-size: 1.125rem;
+}
+
+.juno-radio-native-lg {
+	--radio-size: 1.25rem;
+}
+
+/* ==================== */
+/* DISABLED STATE       */
+/* ==================== */
+.juno-radio-wrapper:has(.juno-radio-input:disabled) {
+	cursor: not-allowed;
+	opacity: 0.5;
+}
+
+.juno-radio-input:disabled {
+	cursor: not-allowed;
+}
+
+/* ==================== */
+/* RADIO BUTTON         */
+/* ==================== */
+.juno-radio-button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: start;
+	cursor: pointer;
+	position: relative;
+	transition: all 75ms ease-in-out;
+	height: var(--radio-button-height, 2.25rem);
+	gap: var(--radio-button-gap, 0.375rem);
+	padding-left: var(--radio-button-padding-x, 0.5rem);
+	padding-right: var(--radio-button-padding-x, 0.5rem);
+	font-size: var(--radio-button-font-size, var(--text-sm));
+	border-radius: var(--radio-button-radius, var(--border-radius-md));
+	user-select: none;
+}
+
+.juno-radio-button-input {
+	position: absolute;
+	inset: 0;
+	opacity: 0;
+	cursor: pointer;
+}
+
+/* Show radio dot when input is checked */
+.juno-radio-button:has(.juno-radio-button-input:checked) .juno-radio-dot {
+	transform: scale(1);
+}
+
+/* Active state for radio dot inside RadioButton */
+.juno-radio-button:active .juno-radio-dot {
+	transform: scale(0.9) translateY(1px);
+}
+
+.juno-radio-button:has(.juno-radio-button-input:checked):active .juno-radio-dot {
+	transform: scale(0.9) translateY(1px);
+}
+
+/* Color variable definitions */
+.juno-radio-button-primary {
+	--radio-btn-color: var(--primary);
+}
+.juno-radio-button-accent {
+	--radio-btn-color: var(--accent);
+}
+.juno-radio-button-success {
+	--radio-btn-color: var(--success);
+}
+.juno-radio-button-error {
+	--radio-btn-color: var(--error);
+}
+.juno-radio-button-warning {
+	--radio-btn-color: var(--warning);
+}
+.juno-radio-button-info {
+	--radio-btn-color: var(--info);
+}
+
+/* Update radio circle style when checked */
+.juno-radio-button:has(.juno-radio-button-input:checked) .juno-radio-solid {
+	background-color: var(--radio-btn-color, var(--primary));
+	outline-color: var(--radio-btn-color, var(--primary));
+}
+
+.juno-radio-button-content {
+	display: flex;
+	flex-direction: column;
+	gap: 0.125rem;
+}
+
+.juno-radio-button-label {
+	font-weight: 500;
+}
+
+.juno-radio-button-description {
+	opacity: 0.7;
+	font-size: 0.875em;
+}
+
+/* Size variants - matches Button sizing */
+.juno-radio-button-sm {
+	--radio-button-height: 1.75rem;
+	--radio-button-gap: 0.25rem;
+	--radio-button-padding-x: 0.375rem;
+	--radio-button-font-size: var(--text-xs);
+	--radio-button-radius: var(--border-radius-sm);
+	--radio-size: 0.875rem;
+}
+
+.juno-radio-button-md {
+	--radio-button-height: 2.25rem;
+	--radio-button-gap: 0.375rem;
+	--radio-button-padding-x: 0.5rem;
+	--radio-button-font-size: var(--text-sm);
+	--radio-button-radius: var(--border-radius-md);
+	--radio-size: 1rem;
+}
+
+.juno-radio-button-lg {
+	--radio-button-height: 3rem;
+	--radio-button-gap: 0.5rem;
+	--radio-button-padding-x: 0.75rem;
+	--radio-button-font-size: var(--text-base);
+	--radio-button-radius: var(--border-radius-lg);
+	--radio-size: 1.125rem;
+}
+
+/* Element size inheritance */
+.juno-elements-small .juno-radio-button {
+	--radio-button-height: 1.75rem;
+	--radio-button-gap: 0.25rem;
+	--radio-button-padding-x: 0.375rem;
+	--radio-button-font-size: var(--text-xs);
+	--radio-button-radius: var(--border-radius-sm);
+	--radio-size: 0.875rem;
+}
+
+.juno-elements-medium .juno-radio-button {
+	--radio-button-height: 2.25rem;
+	--radio-button-gap: 0.375rem;
+	--radio-button-padding-x: 0.5rem;
+	--radio-button-font-size: var(--text-sm);
+	--radio-button-radius: var(--border-radius-md);
+	--radio-size: 1rem;
+}
+
+.juno-elements-large .juno-radio-button {
+	--radio-button-height: 3rem;
+	--radio-button-gap: 0.5rem;
+	--radio-button-padding-x: 0.75rem;
+	--radio-button-font-size: var(--text-base);
+	--radio-button-radius: var(--border-radius-lg);
+	--radio-size: 1.125rem;
+}
+
+/* When RadioButton has description, use card layout */
+.juno-radio-button:has(.juno-radio-button-description) {
+	height: auto;
+	align-items: flex-start;
+	padding: var(--radio-button-padding-x, 0.5rem);
+}
+
+.juno-radio-button:has(.juno-radio-button-description) > .juno-radio-wrapper {
+	margin-top: 0.1875em;
+}
+
+/* Solid variant */
+.juno-radio-button-solid {
+	background: var(--base-0);
+	outline: 1px solid color-mix(in srgb, var(--base-content) 20%, transparent);
+	outline-offset: -1px;
+}
+
+.juno-radio-button-solid:hover {
+	outline-color: color-mix(in srgb, var(--base-content) 30%, transparent);
+}
+
+.juno-radio-button-solid:has(.juno-radio-button-input:checked) {
+	outline-color: var(--radio-btn-color, var(--primary));
+	background: color-mix(in srgb, var(--radio-btn-color, var(--primary)) 5%, transparent);
+}
+
+.juno-radio-button-solid:active {
+	background: color-mix(in srgb, var(--base-content) 3%, transparent);
+}
+
+/* Light variant */
+.juno-radio-button-light {
+	background: transparent;
+	outline: 1px solid color-mix(in srgb, var(--base-content) 20%, transparent);
+	outline-offset: -1px;
+}
+
+.juno-radio-button-light:hover {
+	background: color-mix(in srgb, var(--base-content) 3%, transparent);
+	outline-color: color-mix(in srgb, var(--base-content) 30%, transparent);
+}
+
+.juno-radio-button-light:has(.juno-radio-button-input:checked) {
+	outline-color: color-mix(in srgb, var(--radio-btn-color, var(--primary)) 40%, transparent);
+	background: color-mix(in srgb, var(--radio-btn-color, var(--primary)) 8%, transparent);
+}
+
+.juno-radio-button-light:active {
+	background: color-mix(in srgb, var(--base-content) 5%, transparent);
+}
+
+/* Soft variant */
+.juno-radio-button-soft {
+	background: color-mix(in srgb, var(--base-content) 5%, transparent);
+	outline: none;
+}
+
+.juno-radio-button-soft:hover {
+	background: color-mix(in srgb, var(--base-content) 8%, transparent);
+}
+
+.juno-radio-button-soft:has(.juno-radio-button-input:checked) {
+	background: color-mix(in srgb, var(--radio-btn-color, var(--primary)) 12%, transparent);
+}
+
+.juno-radio-button-soft:active {
+	background: color-mix(in srgb, var(--base-content) 10%, transparent);
+}
+
+/* Disabled state */
+.juno-radio-button:has(.juno-radio-button-input:disabled) {
+	opacity: 0.5;
+	cursor: not-allowed;
+}
+
+.juno-radio-button-input:disabled {
+	cursor: not-allowed;
+}

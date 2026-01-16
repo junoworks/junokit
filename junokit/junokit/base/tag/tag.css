@@ -1,0 +1,240 @@
+@layer components {
+	/* Default tag styles */
+	.juno-tag {
+		display: flex;
+		position: relative;
+		box-sizing: border-box;
+		align-items: center;
+		justify-content: center;
+		width: fit-content;
+		height: fit-content;
+		flex-shrink: 0;
+		transition: all 75ms ease-in-out;
+
+		/* Size - uses inherited --tag-* or falls back to small */
+		min-height: var(--tag-min-height, 1.25rem);
+		padding-left: var(--tag-px, 0.25rem);
+		padding-right: var(--tag-px, 0.25rem);
+		gap: var(--tag-gap, 0.375rem);
+		font-size: var(--tag-font-size, var(--text-xs));
+		line-height: var(--tag-line-height, var(--text-xs--line-height));
+		border-radius: var(--tag-radius, var(--border-radius-sm));
+	}
+
+	/* Size variants */
+	.juno-elements-small .juno-tag,
+	.juno-tag-small {
+		--tag-min-height: 1.25rem;
+		--tag-px: 0.25rem;
+		--tag-gap: 0.375rem;
+		--tag-font-size: var(--text-xs);
+		--tag-line-height: var(--text-xs--line-height);
+		--tag-radius: var(--border-radius-sm);
+	}
+
+	.juno-elements-medium .juno-tag,
+	.juno-tag-medium {
+		--tag-min-height: 1.5rem;
+		--tag-px: 0.5rem;
+		--tag-gap: 0.5rem;
+		--tag-font-size: var(--text-sm);
+		--tag-line-height: var(--text-sm--line-height);
+		--tag-radius: var(--border-radius-md);
+	}
+
+	/* Adjust padding when media is present */
+	.juno-tag-medium.juno-tag-has-media {
+		padding-left: 0.25rem;
+	}
+
+	/* Adjust padding when delete button is present */
+	.juno-tag-medium.juno-tag-has-delete {
+		padding-right: 0.25rem;
+	}
+
+	/* Radius overrides */
+	.juno-tag-radius-none {
+		--tag-radius: 0;
+	}
+	.juno-tag-radius-xs {
+		--tag-radius: var(--border-radius-xs);
+	}
+	.juno-tag-radius-sm {
+		--tag-radius: var(--border-radius-sm);
+	}
+	.juno-tag-radius-md {
+		--tag-radius: var(--border-radius-md);
+	}
+	.juno-tag-radius-lg {
+		--tag-radius: var(--border-radius-lg);
+	}
+	.juno-tag-radius-full {
+		--tag-radius: 9999px;
+		--tag-px: 0.375rem;
+	}
+
+	.juno-tag-radius-full.juno-tag-medium {
+		--tag-px: 0.625rem;
+	}
+
+	/* Light variant */
+	.juno-tag-light {
+		background: var(--juno-tag-surface);
+		color: var(--juno-tag-text-color);
+		outline: 0.5px solid var(--juno-tag-outline);
+		outline-offset: -0.5px;
+	}
+
+	/* Soft variant */
+	.juno-tag-soft {
+		background: var(--juno-tag-surface-soft);
+		color: var(--juno-tag-text-color);
+		backdrop-filter: blur(4px);
+	}
+
+	/* Solid variant */
+	.juno-tag-solid {
+		background: var(--juno-tag-solid-bg);
+		color: var(--juno-tag-solid-text);
+		outline: 0.5px solid var(--juno-tag-outline);
+		outline-offset: -0.5px;
+	}
+
+	/* Outline variant */
+	.juno-tag-outline {
+		background: transparent;
+		color: var(--juno-tag-outline-text);
+		outline: 1px solid var(--juno-tag-outline-border);
+		outline-offset: -1px;
+	}
+
+	/* No color (base-content default) */
+	.juno-tag-inherit {
+		--juno-tag-surface: color-mix(in srgb, var(--base-content) 10%, transparent);
+		--juno-tag-surface-soft: color-mix(in srgb, var(--base-content) 10%, transparent);
+		--juno-tag-text-color: var(--base-content);
+		--juno-tag-outline: color-mix(in srgb, var(--base-content) 30%, transparent);
+		--juno-tag-solid-bg: var(--base-content);
+		--juno-tag-solid-text: var(--base-0);
+		--juno-tag-outline-text: var(--base-content);
+		--juno-tag-outline-border: var(--base-content);
+	}
+
+	/* Color: base-0 */
+	.juno-tag-base-0 {
+		--juno-tag-surface: color-mix(in srgb, var(--base-0) 20%, transparent);
+		--juno-tag-surface-soft: color-mix(in srgb, var(--base-0) 10%, transparent);
+		--juno-tag-text-color: var(--base-content);
+		--juno-tag-outline: color-mix(in srgb, currentColor 30%, transparent);
+		--juno-tag-solid-bg: var(--base-0);
+		--juno-tag-solid-text: var(--base-content);
+		--juno-tag-outline-text: var(--base-0);
+		--juno-tag-outline-border: var(--base-0);
+	}
+
+	.juno-tag-base-0.juno-tag-light,
+	.juno-tag-base-0.juno-tag-soft {
+		backdrop-filter: blur(4px);
+	}
+
+	/* Color: primary */
+	.juno-tag-primary {
+		--juno-tag-surface: color-mix(in srgb, var(--primary) 20%, transparent);
+		--juno-tag-surface-soft: color-mix(in srgb, var(--primary-surface) 50%, transparent);
+		--juno-tag-text-color: var(--primary-content);
+		--juno-tag-outline: color-mix(in srgb, currentColor 30%, transparent);
+		--juno-tag-solid-bg: var(--primary);
+		--juno-tag-solid-text: var(--base-0);
+		--juno-tag-outline-text: var(--primary-focus);
+		--juno-tag-outline-border: var(--primary-focus);
+	}
+
+	/* Color: accent */
+	.juno-tag-accent {
+		--juno-tag-surface: color-mix(in srgb, var(--accent) 20%, transparent);
+		--juno-tag-surface-soft: color-mix(in srgb, var(--accent-surface) 50%, transparent);
+		--juno-tag-text-color: var(--accent-content);
+		--juno-tag-outline: color-mix(in srgb, currentColor 30%, transparent);
+		--juno-tag-solid-bg: var(--accent);
+		--juno-tag-solid-text: var(--base-0);
+		--juno-tag-outline-text: var(--accent-focus);
+		--juno-tag-outline-border: var(--accent-focus);
+	}
+
+	/* Color: info */
+	.juno-tag-info {
+		--juno-tag-surface: color-mix(in srgb, var(--info) 20%, transparent);
+		--juno-tag-surface-soft: color-mix(in srgb, var(--info-surface) 50%, transparent);
+		--juno-tag-text-color: var(--info-content);
+		--juno-tag-outline: color-mix(in srgb, currentColor 30%, transparent);
+		--juno-tag-solid-bg: var(--info);
+		--juno-tag-solid-text: var(--base-0);
+		--juno-tag-outline-text: var(--info-focus);
+		--juno-tag-outline-border: var(--info-focus);
+	}
+
+	/* Color: success */
+	.juno-tag-success {
+		--juno-tag-surface: color-mix(in srgb, var(--success) 20%, transparent);
+		--juno-tag-surface-soft: color-mix(in srgb, var(--success-surface) 50%, transparent);
+		--juno-tag-text-color: var(--success-content);
+		--juno-tag-outline: color-mix(in srgb, currentColor 30%, transparent);
+		--juno-tag-solid-bg: var(--success);
+		--juno-tag-solid-text: var(--base-0);
+		--juno-tag-outline-text: var(--success-focus);
+		--juno-tag-outline-border: var(--success-focus);
+	}
+
+	/* Color: warning */
+	.juno-tag-warning {
+		--juno-tag-surface: color-mix(in srgb, var(--warning) 20%, transparent);
+		--juno-tag-surface-soft: color-mix(in srgb, var(--warning-surface) 50%, transparent);
+		--juno-tag-text-color: var(--warning-content);
+		--juno-tag-outline: color-mix(in srgb, currentColor 30%, transparent);
+		--juno-tag-solid-bg: var(--warning);
+		--juno-tag-solid-text: var(--base-0);
+		--juno-tag-outline-text: var(--warning-focus);
+		--juno-tag-outline-border: var(--warning-focus);
+	}
+
+	/* Color: error */
+	.juno-tag-error {
+		--juno-tag-surface: color-mix(in srgb, var(--error) 20%, transparent);
+		--juno-tag-surface-soft: color-mix(in srgb, var(--error-surface) 50%, transparent);
+		--juno-tag-text-color: var(--error-content);
+		--juno-tag-outline: color-mix(in srgb, currentColor 30%, transparent);
+		--juno-tag-solid-bg: var(--error);
+		--juno-tag-solid-text: var(--base-0);
+		--juno-tag-outline-text: var(--error-focus);
+		--juno-tag-outline-border: var(--error-focus);
+	}
+
+	/* Tag label */
+	.juno-tag-label {
+		flex: 1;
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+
+	/* Delete button */
+	.juno-tag-delete {
+		flex-shrink: 0;
+		stroke-width: 2px;
+		transform: scale(0.9);
+		transition: all 75ms ease-in-out;
+		border-radius: var(--border-radius-sm);
+	}
+
+	.juno-tag-delete:hover {
+		background: color-mix(in srgb, currentColor 10%, transparent);
+		transform: scale(1);
+	}
+
+	.juno-tag-radius-full .juno-tag-delete {
+		border-radius: 9999px;
+	}
+}

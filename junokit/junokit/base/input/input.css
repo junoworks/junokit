@@ -1,0 +1,323 @@
+/* Input primitive styles */
+
+@layer components {
+	.juno-input {
+		--input-color: currentColor;
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		appearance: none;
+		border: none;
+		outline: none;
+		font: inherit;
+		height: fit-content;
+		color: inherit;
+		transition: all 75ms ease-out;
+	}
+
+	.juno-input::placeholder {
+		color: var(--input-color);
+		opacity: 0.5;
+	}
+
+	/* ==================== SIZE ==================== */
+
+	.juno-input-small {
+		--input-ring-size: 1.5px;
+		--input-font-size: 0.75rem;
+		--input-padding: 0.5rem;
+		min-height: 1.75rem; /* 28px / min-h-7 */
+		padding-left: var(--input-padding);
+		padding-right: var(--input-padding);
+		font-size: var(--input-font-size); /* text-xs */
+		border-radius: var(--border-radius-sm); /* rounded-sm */
+	}
+
+	.juno-input-medium {
+		--input-ring-size: 2px;
+		--input-font-size: 0.875rem;
+		--input-padding: 0.625rem;
+		min-height: 2.25rem; /* 36px / min-h-9 */
+		padding-left: var(--input-padding);
+		padding-right: var(--input-padding);
+		font-size: var(--input-font-size); /* text-sm */
+		border-radius: var(--border-radius-md); /* rounded-md */
+	}
+
+	.juno-input-large {
+		--input-ring-size: 2.5px;
+		--input-outline-size: 1px;
+		--input-font-size: 1rem;
+		--input-padding: 0.875rem;
+		min-height: 3rem; /* 48px / min-h-12 */
+		padding-left: var(--input-padding);
+		padding-right: var(--input-padding);
+		font-size: var(--input-font-size);
+		border-radius: var(--border-radius-lg);
+	}
+
+	/* ==================== VARIANT: LIGHT ==================== */
+
+	.juno-input-light {
+		--input-ring-opacity: 20%;
+		background: color-mix(in srgb, var(--input-color) 4%, transparent);
+		outline: var(--input-outline-size, 0.5px) solid color-mix(in srgb, var(--input-color) 20%, transparent);
+		outline-offset: calc(-1 * var(--input-outline-size, 0.5px));
+	}
+
+	.juno-input-light:hover:not(:disabled):not(:focus):not(:focus-within) {
+		outline-color: color-mix(in srgb, var(--input-color) 30%, transparent);
+		background: color-mix(in srgb, var(--input-color) 2%, transparent);
+	}
+
+	.juno-input-light:focus,
+	.juno-input-light:focus-within {
+		outline-color: var(--input-color);
+		background: color-mix(in srgb, var(--input-color) 2%, transparent);
+		box-shadow: 0 0 0 var(--input-ring-size, 2px)
+			color-mix(in srgb, var(--input-color) var(--input-ring-opacity), transparent);
+	}
+
+	/* ==================== VARIANT: SOLID ==================== */
+
+	.juno-input-solid {
+		--input-ring-opacity: 70%;
+		--input-solid-bg: var(--color-base-0, white);
+		background: var(--input-solid-bg);
+		color: var(--color-base-content, black);
+		outline: 1px solid color-mix(in srgb, var(--input-color) 20%, transparent);
+		outline-offset: -1px;
+	}
+
+	.juno-input-solid:hover:not(:disabled):not(:focus):not(:focus-within) {
+		outline-color: color-mix(in srgb, var(--input-color) 30%, transparent);
+	}
+
+	.juno-input-solid:focus,
+	.juno-input-solid:focus-within {
+		outline-color: var(--input-color);
+		box-shadow: 0 0 0 var(--input-ring-size, 2px)
+			color-mix(in srgb, var(--input-color) var(--input-ring-opacity), transparent);
+	}
+
+	/* ==================== VARIANT: SOFT ==================== */
+
+	.juno-input-soft {
+		background: color-mix(in srgb, var(--input-color) 6%, transparent);
+		outline: none !important;
+		box-shadow: none !important;
+	}
+
+	.juno-input-soft:focus,
+	.juno-input-soft:focus-within {
+		background: color-mix(in srgb, var(--input-color) 12%, transparent);
+	}
+
+	/* ==================== VARIANT: UNSTYLED ==================== */
+
+	.juno-input-unstyled,
+	.juno-input-unstyled:focus {
+		outline: none !important;
+		box-shadow: none !important;
+		padding: 0;
+		min-height: unset;
+		border-radius: 0;
+	}
+
+	/* ==================== DISABLED ==================== */
+
+	.juno-input:disabled {
+		opacity: 0.6;
+		cursor: not-allowed;
+	}
+
+	/* ==================== TEXTAREA ==================== */
+
+	.juno-textarea {
+		line-height: 1.5;
+		padding-top: calc(var(--input-padding) * 0.75);
+		padding-bottom: calc(var(--input-padding) * 0.75);
+		/* min-height: calc(var(--input-font-size) * 1.5 * 3 + var(--input-padding) * 1.5); */
+		resize: none;
+	}
+
+	/* ==================== NUMBER INPUT ARROWS ==================== */
+
+	/* Hide spinners by default */
+	.juno-input[type="number"] {
+		-moz-appearance: textfield;
+		appearance: textfield;
+	}
+
+	.juno-input[type="number"]::-webkit-outer-spin-button,
+	.juno-input[type="number"]::-webkit-inner-spin-button {
+		-webkit-appearance: none;
+		margin: 0;
+	}
+
+	/* Hide native search cancel button and decoration */
+	.juno-input[type="search"]::-webkit-search-decoration,
+	.juno-input[type="search"]::-webkit-search-cancel-button,
+	.juno-input[type="search"]::-webkit-search-results-button,
+	.juno-input[type="search"]::-webkit-search-results-decoration {
+		-webkit-appearance: none;
+		appearance: none;
+		display: none;
+	}
+
+	/* Show spinners when needed */
+	.juno-input-show-arrows[type="number"] {
+		-moz-appearance: auto;
+		appearance: auto;
+	}
+
+	.juno-input-show-arrows[type="number"]::-webkit-outer-spin-button,
+	.juno-input-show-arrows[type="number"]::-webkit-inner-spin-button {
+		-webkit-appearance: auto;
+	}
+
+	/* ==================== COLOR ==================== */
+
+	.juno-input-color-primary {
+		--input-color: var(--color-primary);
+		--input-solid-bg: var(--color-primary-surface);
+	}
+	.juno-input-color-accent {
+		--input-color: var(--color-accent);
+		--input-solid-bg: var(--color-accent-surface);
+	}
+	.juno-input-color-success {
+		--input-color: var(--color-success);
+		--input-solid-bg: var(--color-success-surface);
+	}
+	.juno-input-color-error {
+		--input-color: var(--color-error);
+		--input-solid-bg: var(--color-error-surface);
+	}
+	.juno-input-color-warning {
+		--input-color: var(--color-warning);
+		--input-solid-bg: var(--color-warning-surface);
+	}
+
+	/* ==================== INPUT BOX ==================== */
+
+	.input-box {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		gap: var(--input-padding, 0.625rem);
+	}
+
+	/* Strip direct child inputs inside InputBox */
+	.input-box > input,
+	.input-box > textarea,
+	.input-box > .juno-input,
+	.input-box > .juno-input:hover,
+	.input-box > .juno-input:focus {
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		appearance: none;
+		background: transparent;
+		border: none;
+		border-radius: 0;
+		outline: none;
+		box-shadow: none;
+		padding: 0;
+		min-height: unset;
+		flex: 1;
+		min-width: 0;
+		font: inherit;
+		color: inherit;
+	}
+
+	.input-box > input::placeholder,
+	.input-box > textarea::placeholder {
+		color: currentColor;
+		opacity: 0.5;
+	}
+
+	/* Hide native search cancel button inside InputBox */
+	.input-box > input[type="search"]::-webkit-search-decoration,
+	.input-box > input[type="search"]::-webkit-search-cancel-button,
+	.input-box > input[type="search"]::-webkit-search-results-button,
+	.input-box > input[type="search"]::-webkit-search-results-decoration {
+		-webkit-appearance: none;
+		appearance: none;
+		display: none;
+	}
+
+	/* Child icons */
+	.input-box svg,
+	.input-box .icon {
+		flex-shrink: 0;
+	}
+
+	/* ==================== INPUT LABEL ==================== */
+
+	.juno-input-label {
+		color: currentColor;
+		font-weight: 400;
+	}
+
+	.juno-input-label-small {
+		font-size: var(--text-xs);
+	}
+
+	.juno-input-label-medium {
+		font-size: var(--text-sm);
+	}
+
+	.juno-input-label-large {
+		font-size: var(--text-base);
+	}
+
+	/* ==================== INPUT MESSAGE ==================== */
+
+	.juno-input-message {
+		color: currentColor;
+		opacity: 0.7;
+	}
+
+	.juno-input-message-small {
+		font-size: var(--text-xs);
+	}
+
+	.juno-input-message-medium {
+		font-size: var(--text-xs);
+	}
+
+	.juno-input-message-large {
+		font-size: var(--text-sm);
+	}
+} /* end @layer components */
+
+/* ==================== AUTOFILL ==================== */
+
+.juno-input:-webkit-autofill,
+.juno-input:-webkit-autofill:hover,
+.juno-input:-webkit-autofill:focus {
+	-webkit-text-fill-color: currentColor !important;
+	font-size: var(--input-font-size, 0.875rem) !important;
+	transition: background-color 5000s ease-in-out 0s;
+}
+
+.juno-input-unstyled:-webkit-autofill,
+.juno-input-unstyled:-webkit-autofill:hover,
+.juno-input-unstyled:-webkit-autofill:focus {
+	-webkit-box-shadow: 0 0 0 1000px transparent inset;
+	background-color: transparent !important;
+	padding: 0 !important;
+	min-height: unset !important;
+	height: auto !important;
+}
+
+/* InputBox child autofill - block the blue background */
+.input-box > input:-webkit-autofill,
+.input-box > input:-webkit-autofill:hover,
+.input-box > input:-webkit-autofill:focus {
+	-webkit-box-shadow: 0 0 0 1000px transparent inset;
+	-webkit-text-fill-color: currentColor !important;
+	background-color: transparent !important;
+	font-size: inherit !important;
+	caret-color: currentColor;
+	transition: background-color 5000s ease-in-out 0s;
+}

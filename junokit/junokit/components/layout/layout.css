@@ -1,0 +1,42 @@
+/* exists on components layer for low specificity */
+@layer components {
+	:where(:root) {
+		--juno-section-px: 0px;
+		--juno-section-py: 0px;
+		--juno-section-gap: 0px;
+	}
+
+	/* Spacing presets */
+	:where(.juno-spacing-none) {
+		--juno-section-px: 0px;
+		--juno-section-py: 0px;
+		--juno-section-gap: 0px;
+	}
+
+	:where(.juno-spacing-sm) {
+		--juno-section-px: 20px;
+		--juno-section-py: 20px;
+		--juno-section-gap: 12px;
+	}
+
+	:where(.juno-spacing-md) {
+		--juno-section-px: 32px;
+		--juno-section-py: 32px;
+		--juno-section-gap: 16px;
+	}
+
+	:where(.juno-spacing-lg) {
+		--juno-section-px: 48px;
+		--juno-section-py: 48px;
+		--juno-section-gap: 24px;
+	}
+
+	/* Apply spacing when spacing class is present */
+	:where(.juno-spacing-none, .juno-spacing-sm, .juno-spacing-md, .juno-spacing-lg) {
+		padding-left: var(--juno-section-px);
+		padding-right: var(--juno-section-px);
+		padding-top: var(--juno-section-py);
+		padding-bottom: var(--juno-section-py);
+		gap: var(--juno-section-gap);
+	}
+}

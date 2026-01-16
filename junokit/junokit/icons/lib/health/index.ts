@@ -1,0 +1,11 @@
+export { Donate } from "./Donate";
+export { Female } from "./Female";
+export { Healthcare } from "./Healthcare";
+export { HealthShield } from "./HealthShield";
+export { Heart } from "./Heart";
+export { HeartSolid } from "./HeartSolid";
+export { Male } from "./Male";
+export { NonBinary } from "./NonBinary";
+export { Pharmacy } from "./Pharmacy";
+export { Stroller } from "./Stroller";
+export { Weight } from "./Weight";

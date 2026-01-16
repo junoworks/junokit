@@ -1,0 +1,83 @@
+@layer components {
+	.juno-profile-card {
+		--profile-menu-media-size: 20px;
+		--avatar-size: var(--profile-menu-media-size);
+	}
+
+	.juno-profile-card-content {
+		display: flex;
+		align-items: center;
+		width: 100%;
+		gap: inherit;
+		order: -1;
+	}
+
+	.juno-profile-card-name {
+		max-width: 100%;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		user-select: none;
+		transition: all 150ms;
+	}
+
+	/* Avatar position */
+	.juno-profile-card[data-avatar-position="right"] .juno-profile-card-content {
+		order: 1;
+		flex-direction: row-reverse;
+	}
+
+	/* Sizes */
+	.juno-profile-card-small {
+		--profile-menu-media-size: 16px;
+		padding: 4px;
+		gap: 4px;
+		font-size: 12px;
+		border-radius: var(--border-radius-sm);
+	}
+	.juno-profile-card-medium {
+		--profile-menu-media-size: 20px;
+		padding: 5px;
+		gap: 5px;
+		font-size: 14px;
+		border-radius: var(--border-radius-md);
+	}
+	.juno-profile-card-large {
+		--profile-menu-media-size: 22px;
+		padding: 7px;
+		gap: 7px;
+		font-size: 16px;
+		border-radius: var(--border-radius-lg);
+	}
+
+	/* Light variant */
+	.juno-profile-card-light {
+		background: var(--base-0);
+		color: var(--base-content);
+		outline: 0.5px solid color-mix(in srgb, var(--base-content) 15%, transparent);
+		outline-offset: -0.5px;
+	}
+	.juno-profile-card-light:hover,
+	.juno-profile-card-light[data-focused] {
+		background: color-mix(in srgb, var(--base-content) 3%, var(--base-0));
+		outline-color: color-mix(in srgb, var(--base-content) 20%, transparent);
+	}
+
+	/* Soft variant */
+	.juno-profile-card-soft {
+		background: color-mix(in srgb, var(--base-content) 8%, transparent);
+	}
+	.juno-profile-card-soft:hover,
+	.juno-profile-card-soft[data-focused] {
+		background: color-mix(in srgb, var(--base-content) 12%, transparent);
+	}
+
+	/* Ghost variant */
+	.juno-profile-card-ghost {
+		background: transparent;
+	}
+	.juno-profile-card-ghost:hover,
+	.juno-profile-card-ghost[data-focused] {
+		background: color-mix(in srgb, var(--base-content) 8%, transparent);
+	}
+}

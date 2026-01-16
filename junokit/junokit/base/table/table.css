@@ -1,0 +1,174 @@
+/* exists on components layer for low specificity */
+@layer components {
+	:where(:root) {
+		--juno-table-cell-pl: 12px;
+		--juno-table-cell-pr: 12px;
+		--juno-table-cell-pt: 8px;
+		--juno-table-cell-pb: 8px;
+		--juno-table-radius: var(--border-radius-md);
+		--juno-table-border: 1px solid var(--current-10);
+		--juno-table-cell-border-bottom: 1px solid var(--current-10);
+		--juno-table-cell-border-right: 1px solid var(--current-10);
+	}
+
+	:where(.juno-table) {
+		width: 100%;
+		transition: all 150ms ease-in-out;
+		table-layout: fixed;
+		border-collapse: separate;
+		border-radius: var(--juno-table-radius, 0px);
+		border-spacing: 0;
+	}
+
+	/* Table size variants */
+	:where(.juno-table-small) {
+		--juno-table-cell-pl: 8px;
+		--juno-table-cell-pr: 8px;
+		--juno-table-cell-pt: 6px;
+		--juno-table-cell-pb: 6px;
+		--juno-table-radius: var(--border-radius-sm);
+	}
+
+	:where(.juno-table-medium) {
+		--juno-table-cell-pl: 12px;
+		--juno-table-cell-pr: 12px;
+		--juno-table-cell-pt: 8px;
+		--juno-table-cell-pb: 8px;
+		--juno-table-radius: var(--border-radius-md);
+	}
+
+	:where(.juno-table-large) {
+		--juno-table-cell-pl: 16px;
+		--juno-table-cell-pr: 16px;
+		--juno-table-cell-pt: 10px;
+		--juno-table-cell-pb: 10px;
+		--juno-table-radius: var(--border-radius-lg);
+	}
+
+	/* Table radius variants */
+	:where(.juno-table-radius-none) {
+		--juno-table-radius: 0px;
+	}
+	:where(.juno-table-radius-xs) {
+		--juno-table-radius: var(--border-radius-xs);
+	}
+	:where(.juno-table-radius-sm) {
+		--juno-table-radius: var(--border-radius-sm);
+	}
+	:where(.juno-table-radius-md) {
+		--juno-table-radius: var(--border-radius-md);
+	}
+	:where(.juno-table-radius-lg) {
+		--juno-table-radius: var(--border-radius-lg);
+	}
+	:where(.juno-table-radius-xl) {
+		--juno-table-radius: var(--border-radius-xl);
+	}
+
+	/* Table Outline */
+	:where(
+			.juno-table.juno-table-borders-all,
+			.juno-table.juno-table-borders-horizontal,
+			.juno-table.juno-table-borders-vertical
+		) {
+		border: var(--juno-table-border);
+	}
+
+	/* Cell - every cell except last */
+	:where(
+			.juno-table-borders-all tbody td:not(:last-child),
+			.juno-table-borders-all tbody th:not(:last-child),
+			.juno-table-borders-all thead td:not(:last-child),
+			.juno-table-borders-all thead th:not(:last-child)
+		) {
+		border-right: var(--juno-table-cell-border-right);
+	}
+
+	:where(
+			.juno-table-borders-all tbody tr:not(:last-child) td,
+			.juno-table-borders-all tbody tr:not(:last-child) th,
+			.juno-table-borders-all thead td,
+			.juno-table-borders-all thead th
+		) {
+		border-bottom: var(--juno-table-cell-border-bottom);
+	}
+
+	/* Cell Only Horizontal Borders */
+	:where(
+			.juno-table-borders-horizontal tbody tr:not(:last-child) td,
+			.juno-table-borders-horizontal tbody tr:not(:last-child) th,
+			.juno-table-borders-horizontal thead td,
+			.juno-table-borders-horizontal thead th,
+			.juno-table-borders-horizontal_internal tbody tr:not(:last-child) td,
+			.juno-table-borders-horizontal_internal tbody tr:not(:last-child) th,
+			.juno-table-borders-horizontal_internal thead td,
+			.juno-table-borders-horizontal_internal thead th
+		) {
+		border-bottom: var(--juno-table-cell-border-bottom);
+	}
+
+	/* Cell Only Vertical Borders */
+	:where(
+			.juno-table-borders-vertical tbody td,
+			.juno-table-borders-vertical tbody th,
+			.juno-table-borders-vertical thead td,
+			.juno-table-borders-vertical thead th
+		) {
+		border-right: var(--juno-table-cell-border-right);
+	}
+
+	/* Header cell border radius */
+	:where(.juno-table thead th:first-child, .juno-table thead td:first-child) {
+		border-radius: var(--juno-table-radius, 0px) 0 0 0;
+	}
+
+	:where(.juno-table thead th:last-child, .juno-table thead td:last-child) {
+		border-radius: 0 var(--juno-table-radius, 0px) 0 0;
+	}
+
+	/* Body cell border radius when no thead */
+	:where(
+			.juno-table:not(:has(thead)) tbody tr:first-child td:first-child,
+			.juno-table:not(:has(thead)) tbody tr:first-child th:first-child
+		) {
+		border-radius: var(--juno-table-radius, 0px) 0 0 0;
+	}
+
+	:where(
+			.juno-table:not(:has(thead)) tbody tr:first-child td:last-child,
+			.juno-table:not(:has(thead)) tbody tr:first-child th:last-child
+		) {
+		border-radius: 0 var(--juno-table-radius, 0px) 0 0;
+	}
+
+	:where(
+			.juno-table:not(:has(tfoot)) tbody tr:last-child td:first-child,
+			.juno-table:not(:has(tfoot)) tbody tr:last-child th:first-child
+		) {
+		border-radius: 0 0 0 var(--juno-table-radius, 0px);
+	}
+
+	:where(
+			.juno-table:not(:has(tfoot)) tbody tr:last-child td:last-child,
+			.juno-table:not(:has(tfoot)) tbody tr:last-child th:last-child
+		) {
+		border-radius: 0 0 var(--juno-table-radius, 0px) 0;
+	}
+
+	/* Common cell styles */
+	:where(.juno-table tbody td, .juno-table tbody th, .juno-table thead td, .juno-table thead th) {
+		padding-left: var(--juno-table-cell-pl, 0px);
+		padding-right: var(--juno-table-cell-pr, 0px);
+		padding-top: var(--juno-table-cell-pt, 0px);
+		padding-bottom: var(--juno-table-cell-pb, 0px);
+		display: table-cell;
+		height: 100%;
+	}
+
+	/* Header-specific styles */
+	:where(.juno-table thead th, .juno-table thead td) {
+		background-color: var(--current-4);
+		font-weight: 500;
+		text-align: left;
+	}
+}

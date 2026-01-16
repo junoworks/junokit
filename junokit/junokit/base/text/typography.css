@@ -1,0 +1,105 @@
+/* exists on components layer for low specificity */
+@layer components {
+	:where(:root) {
+		/* Base typography scale for headings */
+		--heading-overline-font-size: 0.75rem; /* 12px */
+		--heading-overline-line-height: 1.25; /* ~15px */
+
+		--heading-subtitle-font-size: 1rem; /* 16px */
+		--heading-subtitle-line-height: 1.4; /* ~22px */
+
+		--heading-title-font-size: 1.5rem; /* 24px */
+		--heading-title-line-height: 1.35; /* ~32px */
+
+		--heading-display-font-size: 2.25rem; /* 36px */
+		--heading-display-line-height: 1.25; /* ~45px */
+
+		--heading-hero-font-size: 3.75rem; /* 60px */
+		--heading-hero-line-height: 1.1; /* ~66px */
+
+		/* Base weights (kept stable) */
+		--heading-weight-base-overline: 600;
+		--heading-weight-base-subtitle: 500;
+		--heading-weight-base-title: 600;
+		--heading-weight-base-display: 600;
+		--heading-weight-base-hero: 700;
+	}
+
+	/* HEADING BASE */
+	:where(.jn-h-hero, .jn-h-display, .jn-h-title, .jn-h-subtitle, .jn-h-overline) {
+		white-space: nowrap;
+		height: fit-content;
+		font-family: var(--font-accent);
+	}
+
+	:where(.jn-h-hero) {
+		font-size: var(--heading-hero-font-size);
+		line-height: var(--heading-hero-line-height);
+		font-weight: clamp(1, calc(var(--heading-weight-base-hero) + var(--font-weight-offset)), 1000);
+	}
+
+	:where(.jn-h-display) {
+		font-size: var(--heading-display-font-size);
+		line-height: var(--heading-display-line-height);
+		font-weight: clamp(1, calc(var(--heading-weight-base-display) + var(--font-weight-offset)), 1000);
+	}
+
+	:where(.jn-h-title) {
+		font-size: var(--heading-title-font-size);
+		line-height: var(--heading-title-line-height);
+		font-weight: clamp(1, calc(var(--heading-weight-base-title) + var(--font-weight-offset)), 1000);
+	}
+
+	:where(.jn-h-subtitle) {
+		font-size: var(--heading-subtitle-font-size);
+		line-height: var(--heading-subtitle-line-height);
+		font-weight: clamp(1, calc(var(--heading-weight-base-subtitle) + var(--font-weight-offset)), 1000);
+	}
+
+	:where(.jn-h-overline) {
+		font-size: var(--heading-overline-font-size);
+		line-height: var(--heading-overline-line-height);
+		letter-spacing: 0.08em; /* typical for overlines */
+		text-transform: uppercase;
+		font-weight: clamp(1, calc(var(--heading-weight-base-overline) + var(--font-weight-offset)), 1000);
+	}
+
+	/* TEXT */
+	:where(.jn-txt-default) {
+		white-space: wrap;
+		height: fit-content;
+	}
+
+	/* LINK */
+	:where(.jn-lnk-muted) {
+		opacity: 0.7;
+		cursor: pointer;
+		transition: opacity 0.2s ease;
+	}
+
+	:where(.jn-lnk-muted:hover) {
+		opacity: 1;
+	}
+
+	:where(.jn-lnk-underlined) {
+		cursor: pointer;
+		text-decoration: none;
+		transition: text-decoration 75ms ease;
+	}
+
+	:where(.jn-lnk-underlined:hover) {
+		text-decoration: underline;
+	}
+
+	:where(.jn-lnk-highlighted) {
+		cursor: pointer;
+		text-decoration: none;
+		transition: background-color 75ms ease;
+		border-radius: var(--border-radius-xs);
+		background-color: transparent;
+	}
+
+	:where(.jn-lnk-highlighted:hover) {
+		background-color: var(--current-5);
+	}
+}

@@ -1,0 +1,12 @@
+export { Balcony } from "./Balcony";
+export { Bathroom } from "./Bathroom";
+export { BathroomSolid } from "./BathroomSolid";
+export { Building } from "./Building";
+export { Church } from "./Church";
+export { City } from "./City";
+export { Elevator } from "./Elevator";
+export { Farm } from "./Farm";
+export { Garage } from "./Garage";
+export { Hospital } from "./Hospital";
+export { Industry } from "./Industry";
+export { Shop } from "./Shop";

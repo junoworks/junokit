@@ -1,0 +1,5 @@
+/* All icons default to 1em size, but can be overridden via CSS variable --icon-size */
+.juno-icon {
+	width: var(--icon-size, 1em);
+	height: var(--icon-size, 1em);
+}

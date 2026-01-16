@@ -1,0 +1,553 @@
+@layer components {
+	/* ===== TAB (Individual tab item) ===== */
+
+	.juno-tab {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+		white-space: nowrap;
+		user-select: none;
+		cursor: pointer;
+		transition: all 75ms;
+		position: relative;
+		font-weight: 400;
+	}
+
+	/* Hidden input */
+	.juno-tab-input {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		white-space: nowrap;
+		border: 0;
+	}
+
+	/* Visual wrapper */
+	.juno-tab-visual {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		justify-content: center;
+		padding: 0.125rem 0.5rem;
+		border-radius: var(--border-radius-md);
+		transition:
+			background-color 75ms,
+			color 75ms,
+			box-shadow 75ms,
+			outline 75ms,
+			opacity 75ms;
+	}
+
+	/* Content wrapper (for underline positioning) */
+	.juno-tab-content {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		gap: 0.5rem;
+		position: relative;
+	}
+
+	/* ===== SIZE VARIANTS ===== */
+
+	.juno-tab-small {
+		font-size: 0.75rem;
+	}
+
+	.juno-tab-small .juno-tab-visual {
+		padding: 0.125rem 0.5rem;
+		border-radius: var(--border-radius-sm);
+	}
+
+	.juno-tab-small .juno-tab-content {
+		gap: 0.25rem;
+	}
+
+	.juno-tab-medium {
+		font-size: 0.875rem;
+	}
+
+	.juno-tab-medium .juno-tab-visual {
+		padding: 0.125rem 0.5rem;
+		border-radius: var(--border-radius-md);
+	}
+
+	.juno-tab-medium .juno-tab-content {
+		gap: 0.375rem;
+	}
+
+	.juno-tab-large {
+		font-size: 1rem;
+	}
+
+	.juno-tab-large .juno-tab-visual {
+		padding: 0.125rem 0.5rem;
+		border-radius: var(--border-radius-lg);
+	}
+
+	.juno-tab-large .juno-tab-content {
+		gap: 0.5rem;
+	}
+
+	/* ===== VARIANT: ghost ===== */
+	/* opacity change, hover bg, color on selected */
+
+	.juno-tab-ghost,
+	.juno-tab-group-ghost .juno-tab {
+		opacity: 0.6;
+	}
+
+	.juno-tab-ghost:hover,
+	.juno-tab-group-ghost .juno-tab:hover {
+		opacity: 1;
+	}
+
+	.juno-tab-ghost:hover .juno-tab-visual,
+	.juno-tab-group-ghost .juno-tab:hover .juno-tab-visual {
+		background-color: color-mix(in srgb, currentColor 6%, transparent);
+	}
+
+	.juno-tab-ghost:has(input:checked),
+	.juno-tab-group-ghost .juno-tab:has(input:checked) {
+		opacity: 1;
+		color: var(--tg-color, inherit);
+	}
+
+	.juno-tab-ghost:has(input:checked) .juno-tab-visual,
+	.juno-tab-group-ghost .juno-tab:has(input:checked) .juno-tab-visual {
+		background-color: transparent;
+	}
+
+	.juno-tab-ghost:has(input:checked):hover .juno-tab-visual,
+	.juno-tab-group-ghost .juno-tab:has(input:checked):hover .juno-tab-visual {
+		background-color: color-mix(in srgb, currentColor 6%, transparent);
+	}
+
+	/* ===== VARIANT: soft ===== */
+	/* bg fill on selected */
+
+	.juno-tab-soft,
+	.juno-tab-group-soft .juno-tab {
+		opacity: 0.7;
+	}
+
+	.juno-tab-soft:hover,
+	.juno-tab-group-soft .juno-tab:hover {
+		opacity: 1;
+	}
+
+	.juno-tab-soft:hover .juno-tab-visual,
+	.juno-tab-group-soft .juno-tab:hover .juno-tab-visual {
+		background-color: color-mix(in srgb, currentColor 10%, transparent);
+	}
+
+	.juno-tab-soft:has(input:checked),
+	.juno-tab-group-soft .juno-tab:has(input:checked) {
+		opacity: 1;
+		color: var(--tg-color, inherit);
+	}
+
+	.juno-tab-soft:has(input:checked) .juno-tab-visual,
+	.juno-tab-group-soft .juno-tab:has(input:checked) .juno-tab-visual {
+		background-color: color-mix(in srgb, currentColor 10%, transparent);
+	}
+
+	/* ===== VARIANT: light ===== */
+	/* elevated card look with shadow */
+
+	.juno-tab-light,
+	.juno-tab-group-light .juno-tab {
+		opacity: 0.7;
+	}
+
+	.juno-tab-light:hover,
+	.juno-tab-group-light .juno-tab:hover {
+		opacity: 1;
+	}
+
+	.juno-tab-light:hover .juno-tab-visual,
+	.juno-tab-group-light .juno-tab:hover .juno-tab-visual {
+		background-color: color-mix(in srgb, currentColor 5%, transparent);
+	}
+
+	.juno-tab-light:has(input:checked),
+	.juno-tab-group-light .juno-tab:has(input:checked) {
+		opacity: 1;
+		color: var(--base-content);
+	}
+
+	.juno-tab-light:has(input:checked) .juno-tab-visual,
+	.juno-tab-group-light .juno-tab:has(input:checked) .juno-tab-visual {
+		background: linear-gradient(
+			to top,
+			color-mix(in srgb, var(--tg-color, var(--primary)) 3%, var(--base-0)),
+			var(--base-0)
+		);
+		box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+		outline: 0.5px solid color-mix(in srgb, var(--tg-color, var(--primary)) 15%, transparent);
+		outline-offset: -0.5px;
+	}
+
+	.juno-tab-light:has(input:checked):hover .juno-tab-visual,
+	.juno-tab-group-light .juno-tab:has(input:checked):hover .juno-tab-visual {
+		background: linear-gradient(
+			to top,
+			color-mix(in srgb, var(--tg-color, var(--primary)) 5%, var(--base-0)),
+			var(--base-0)
+		);
+		outline: 0.5px solid color-mix(in srgb, var(--tg-color, var(--primary)) 20%, transparent);
+	}
+
+	/* ===== VARIANT: flat ===== */
+	/* like ghost but different padding, for underline style */
+
+	.juno-tab-flat,
+	.juno-tab-group-flat .juno-tab {
+		opacity: 0.7;
+	}
+
+	.juno-tab-flat:hover,
+	.juno-tab-group-flat .juno-tab:hover {
+		opacity: 1;
+	}
+
+	.juno-tab-flat:hover .juno-tab-visual,
+	.juno-tab-group-flat .juno-tab:hover .juno-tab-visual {
+		background-color: color-mix(in srgb, currentColor 5%, transparent);
+	}
+
+	.juno-tab-flat .juno-tab-visual {
+		border-radius: var(--border-radius-xs);
+	}
+
+	.juno-tab-flat:has(input:checked),
+	.juno-tab-group-flat .juno-tab:has(input:checked) {
+		opacity: 1;
+		color: var(--tg-color, inherit);
+	}
+
+	.juno-tab-flat:has(input:checked) .juno-tab-visual,
+	.juno-tab-group-flat .juno-tab:has(input:checked) .juno-tab-visual {
+		background-color: transparent;
+	}
+
+	.juno-tab-flat:has(input:checked):hover .juno-tab-visual,
+	.juno-tab-group-flat .juno-tab:has(input:checked):hover .juno-tab-visual {
+		background-color: color-mix(in srgb, currentColor 5%, transparent);
+	}
+
+	/* ===== COLOR VARIANTS (for checked state) ===== */
+
+	.juno-tab-ghost.juno-tab-primary:has(input:checked),
+	.juno-tab-soft.juno-tab-primary:has(input:checked),
+	.juno-tab-flat.juno-tab-primary:has(input:checked) {
+		color: var(--primary);
+	}
+
+	.juno-tab-ghost.juno-tab-accent:has(input:checked),
+	.juno-tab-soft.juno-tab-accent:has(input:checked),
+	.juno-tab-flat.juno-tab-accent:has(input:checked) {
+		color: var(--accent);
+	}
+
+	/* light variant uses base-content for checked, not color */
+
+	/* ===== FOCUS STATES ===== */
+
+	.juno-tab:has(input:focus-visible) .juno-tab-visual {
+		outline: 2px solid color-mix(in srgb, currentColor 40%, transparent);
+		outline-offset: 1px;
+	}
+
+	.juno-tab-primary:has(input:focus-visible) .juno-tab-visual {
+		outline-color: color-mix(in srgb, var(--primary) 50%, transparent);
+	}
+
+	.juno-tab-accent:has(input:focus-visible) .juno-tab-visual {
+		outline-color: color-mix(in srgb, var(--accent) 50%, transparent);
+	}
+
+	/* ===== DISABLED STATE ===== */
+
+	.juno-tab:has(input:disabled) {
+		opacity: 0.5;
+		cursor: not-allowed;
+		pointer-events: none;
+	}
+
+	/* ===== TAB GROUP ===== */
+
+	.juno-tab-group {
+		display: flex;
+		flex-direction: row;
+		align-items: center;
+		position: relative;
+		width: fit-content;
+
+		/* Size variables - medium by default */
+		--tg-gap: 0.5rem;
+		--tg-padding-x: 0.5rem;
+		--tg-padding-y: 0.375rem;
+		--tg-font-size: 0.875rem;
+		--tg-underline-offset: 0.5rem;
+		--tg-underline-height: 2.5px;
+		--tg-color: var(--primary);
+	}
+
+	/* Size: small */
+	.juno-tab-group-small {
+		--tg-gap: 0.375rem;
+		--tg-padding-x: 0.375rem;
+		--tg-padding-y: 0.25rem;
+		--tg-font-size: 0.75rem;
+		--tg-underline-offset: 0.375rem;
+		--tg-underline-height: 2px;
+	}
+
+	/* Size: large */
+	.juno-tab-group-large {
+		--tg-gap: 0.75rem;
+		--tg-padding-x: 0.625rem;
+		--tg-padding-y: 0.75rem;
+		--tg-font-size: 1rem;
+		--tg-underline-offset: 0.75rem;
+		--tg-underline-height: 3px;
+	}
+
+	/* Side: bottom (default) - horizontal, underline at bottom */
+	.juno-tab-group-bottom {
+		flex-direction: row;
+	}
+
+	/* Side: top - horizontal, underline at top */
+	.juno-tab-group-top {
+		flex-direction: row;
+	}
+
+	/* Side: left - vertical, underline at left */
+	.juno-tab-group-left {
+		flex-direction: column;
+		align-items: stretch;
+	}
+
+	.juno-tab-group-left .juno-tab-visual {
+		flex: 1;
+		justify-content: flex-start;
+	}
+
+	/* Side: right - vertical, underline at right */
+	.juno-tab-group-right {
+		flex-direction: column;
+		align-items: stretch;
+	}
+
+	.juno-tab-group-right .juno-tab-visual {
+		flex: 1;
+		justify-content: flex-end;
+	}
+
+	/* Apply size to tabs inside group */
+	.juno-tab-group .juno-tab {
+		font-size: var(--tg-font-size);
+	}
+
+	.juno-tab-group .juno-tab-visual {
+		padding: 0.125rem var(--tg-padding-x);
+	}
+
+	.juno-tab-group .juno-tab-content {
+		gap: var(--tg-gap);
+	}
+
+	/* Ghost variant - negative margin, gap */
+	.juno-tab-group-ghost {
+		gap: var(--tg-gap);
+	}
+
+	/* Ghost horizontal - negative left margin */
+	.juno-tab-group-ghost.juno-tab-group-bottom,
+	.juno-tab-group-ghost.juno-tab-group-top {
+		margin-left: calc(-1 * var(--tg-padding-x));
+		padding-block: var(--tg-padding-y);
+	}
+
+	/* Ghost vertical - negative top margin */
+	.juno-tab-group-ghost.juno-tab-group-left,
+	.juno-tab-group-ghost.juno-tab-group-right {
+		margin-top: calc(-1 * var(--tg-padding-x));
+		padding-inline: var(--tg-padding-y);
+	}
+
+	/* Flat variant - no gap, taller padding */
+	.juno-tab-group-flat {
+		gap: 0;
+		--tg-padding-y-visual: 0.75rem;
+	}
+
+	.juno-tab-group-flat.juno-tab-group-small {
+		--tg-padding-y-visual: 0.5rem;
+	}
+
+	.juno-tab-group-flat.juno-tab-group-large {
+		--tg-padding-y-visual: 1rem;
+	}
+
+	.juno-tab-group-flat .juno-tab-visual {
+		padding: var(--tg-padding-y-visual) var(--tg-padding-x);
+		border-radius: var(--border-radius-xs);
+	}
+
+	.juno-tab-group-flat.juno-tab-group-left .juno-tab-visual,
+	.juno-tab-group-flat.juno-tab-group-right .juno-tab-visual {
+		padding-inline: calc(var(--tg-padding-x) * 2);
+		padding-block: calc(var(--tg-padding-y-visual) * 0.75);
+	}
+
+	/* Soft/Light variants - gap */
+	.juno-tab-group-soft,
+	.juno-tab-group-light {
+		gap: var(--tg-gap);
+	}
+
+	/* Gray underline for ghost/flat */
+	.juno-tab-group-line {
+		position: absolute;
+		background-color: color-mix(in srgb, currentColor 10%, transparent);
+		border-radius: 9999px;
+	}
+
+	/* Line position by side */
+	.juno-tab-group-bottom .juno-tab-group-line {
+		bottom: 0;
+		left: 0;
+		right: 0;
+		height: 1px;
+	}
+
+	.juno-tab-group-top .juno-tab-group-line {
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 1px;
+	}
+
+	.juno-tab-group-left .juno-tab-group-line {
+		left: 0;
+		top: 0;
+		bottom: 0;
+		width: 1px;
+	}
+
+	.juno-tab-group-right .juno-tab-group-line {
+		right: 0;
+		top: 0;
+		bottom: 0;
+		width: 1px;
+	}
+
+	/* Ghost: offset line to compensate for negative margin (horizontal) */
+	.juno-tab-group-ghost.juno-tab-group-bottom .juno-tab-group-line,
+	.juno-tab-group-ghost.juno-tab-group-top .juno-tab-group-line {
+		left: var(--tg-padding-x);
+		right: auto;
+		width: calc(100% - var(--tg-padding-x) * 2);
+	}
+
+	/* Ghost: offset line to compensate for negative margin (vertical) */
+	.juno-tab-group-ghost.juno-tab-group-left .juno-tab-group-line,
+	.juno-tab-group-ghost.juno-tab-group-right .juno-tab-group-line {
+		top: var(--tg-padding-x);
+		bottom: auto;
+		height: calc(100% - var(--tg-padding-x) * 2);
+	}
+
+	/* Tab underline indicator via ::after on content */
+	.juno-tab-group-ghost .juno-tab-content::after {
+		content: "";
+		position: absolute;
+		background-color: var(--tg-color);
+		border-radius: 2px;
+		opacity: 0;
+		transition: opacity 75ms;
+	}
+
+	.juno-tab-group-ghost .juno-tab:has(input:checked) .juno-tab-content::after {
+		opacity: 1;
+	}
+
+	/* Ghost indicator position by side */
+	.juno-tab-group-ghost.juno-tab-group-bottom .juno-tab-content::after {
+		bottom: calc(-1 * var(--tg-underline-offset));
+		left: 0;
+		right: 0;
+		height: var(--tg-underline-height);
+	}
+
+	.juno-tab-group-ghost.juno-tab-group-top .juno-tab-content::after {
+		top: calc(-1 * var(--tg-underline-offset));
+		left: 0;
+		right: 0;
+		height: var(--tg-underline-height);
+	}
+
+	.juno-tab-group-ghost.juno-tab-group-left .juno-tab-content::after {
+		left: calc(-1 * (var(--tg-underline-offset) + var(--tg-padding-y)));
+		top: 0;
+		bottom: 0;
+		width: var(--tg-underline-height);
+	}
+
+	.juno-tab-group-ghost.juno-tab-group-right .juno-tab-content::after {
+		right: calc(-1 * (var(--tg-underline-offset) + var(--tg-padding-y)));
+		top: 0;
+		bottom: 0;
+		width: var(--tg-underline-height);
+	}
+
+	/* Flat: underline on tab element */
+	.juno-tab-group-flat .juno-tab::after {
+		content: "";
+		position: absolute;
+		background-color: var(--tg-color);
+		border-radius: 0;
+		opacity: 0;
+		transition: opacity 75ms;
+	}
+
+	.juno-tab-group-flat .juno-tab:has(input:checked)::after {
+		opacity: 1;
+	}
+
+	/* Flat indicator position by side */
+	.juno-tab-group-flat.juno-tab-group-bottom .juno-tab::after {
+		bottom: 0;
+		left: 0;
+		right: 0;
+		height: var(--tg-underline-height);
+	}
+
+	.juno-tab-group-flat.juno-tab-group-top .juno-tab::after {
+		top: 0;
+		left: 0;
+		right: 0;
+		height: var(--tg-underline-height);
+	}
+
+	.juno-tab-group-flat.juno-tab-group-left .juno-tab::after {
+		left: 0;
+		top: 0;
+		bottom: 0;
+		width: var(--tg-underline-height);
+	}
+
+	.juno-tab-group-flat.juno-tab-group-right .juno-tab::after {
+		right: 0;
+		top: 0;
+		bottom: 0;
+		width: var(--tg-underline-height);
+	}
+}

@@ -1,0 +1,64 @@
+@import "./themes.css"; /* <-- defines theme variables */
+@import "./tailwind.css"; /* <-- injects additional utilities into tailwind css */
+@import "./animations.css"; /* <-- defines keyframes for animations */
+
+/* Base */
+@import "../base/alert/alert.css";
+@import "../base/check/check.css";
+@import "../base/button/buttons.css";
+@import "../base/input/input.css";
+@import "../base/popover/popover.css";
+@import "../base/radio/radio.css";
+@import "../base/range/slider.css";
+@import "../base/select/select.css";
+@import "../base/tag/tag.css";
+@import "../base/text/typography.css";
+@import "../base/sidebars/sidebarlink.css";
+@import "../base/table/table.css";
+@import "../base/tabs/tabs.css";
+@import "../base/profile/avatar.css";
+@import "../base/profile/profilecard.css";
+
+/* Icons */
+@import "../icons/icon.css";
+
+/* Custom Classes */
+.pill-shaped {
+	border-radius: 9999px;
+}
+
+.text-2xs {
+	font-size: 0.625rem;
+	line-height: 0.875rem;
+}
+
+.text-md {
+	font-size: 1rem;
+	line-height: 1.5rem;
+}
+
+html,
+body {
+	background-color: var(--base-0);
+}
+
+body {
+	font-family: var(--font-body);
+}
+
+/* can be useful for preventing horizontal swipe navigation 
+uncomment if needed
+html, body {
+    overscroll-behavior-x: none; 
+    touch-action: pan-y; 
+  }
+*/
+
+/* Prevent white space at the bottom of the page on iOS */
+html {
+	padding-bottom: env(safe-area-inset-bottom);
+}
+
+.gap-inherit {
+	gap: inherit;
+}

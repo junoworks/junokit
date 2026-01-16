@@ -1,0 +1,209 @@
+.juno-check-wrapper {
+	position: relative;
+	flex-shrink: 0;
+	width: fit-content;
+	cursor: pointer;
+}
+
+.juno-check-input {
+	position: absolute;
+	inset: 0;
+	opacity: 0;
+	cursor: pointer;
+}
+
+.juno-check {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	pointer-events: none;
+	transition: all 75ms ease-in-out;
+	width: var(--check-size, 1.25rem);
+	height: var(--check-size, 1.25rem);
+	border-radius: var(--check-radius, var(--border-radius-sm));
+}
+
+.juno-check-icon {
+	width: var(--check-size, 1.25rem);
+	height: var(--check-size, 1.25rem);
+}
+
+/* Element size inheritance - allows parent containers to control check size */
+.juno-elements-small {
+	--check-size: 1rem;
+	--check-radius: var(--border-radius-xs);
+}
+
+.juno-elements-medium {
+	--check-size: 1.25rem;
+	--check-radius: var(--border-radius-sm);
+}
+
+.juno-elements-large {
+	--check-size: 1.5rem;
+	--check-radius: var(--border-radius-lg);
+}
+
+/* Size variants - direct application */
+.juno-check-sm {
+	--check-size: 1rem;
+	--check-radius: var(--border-radius-xs);
+}
+
+.juno-check-md {
+	--check-size: 1.25rem;
+	--check-radius: var(--border-radius-sm);
+}
+
+.juno-check-lg {
+	--check-size: 1.5rem;
+	--check-radius: var(--border-radius-lg);
+}
+
+/* ==================== */
+/* SOLID VARIANT        */
+/* ==================== */
+.juno-check-solid {
+	background-color: var(--base-0);
+	outline: 1px solid color-mix(in srgb, var(--base-content) 20%, transparent);
+	outline-offset: -1px;
+}
+
+.juno-check-solid.juno-check-checked {
+	background-color: currentColor;
+	outline-color: currentColor;
+}
+
+/* Solid + color variants checked */
+.juno-check-solid.juno-check-primary.juno-check-checked {
+	background-color: var(--primary);
+	outline-color: var(--primary);
+}
+
+.juno-check-solid.juno-check-accent.juno-check-checked {
+	background-color: var(--accent);
+	outline-color: var(--accent);
+}
+
+.juno-check-solid.juno-check-error.juno-check-checked {
+	background-color: var(--error);
+	outline-color: var(--error);
+}
+
+.juno-check-solid.juno-check-success.juno-check-checked {
+	background-color: var(--success);
+	outline-color: var(--success);
+}
+
+.juno-check-solid.juno-check-warning.juno-check-checked {
+	background-color: var(--warning);
+	outline-color: var(--warning);
+}
+
+.juno-check-solid.juno-check-info.juno-check-checked {
+	background-color: var(--info);
+	outline-color: var(--info);
+}
+
+/* ==================== */
+/* LIGHT VARIANT        */
+/* ==================== */
+.juno-check-light {
+	background-color: transparent;
+	outline: 1px solid color-mix(in srgb, var(--base-content) 20%, transparent);
+	outline-offset: -1px;
+}
+
+.juno-check-light.juno-check-checked {
+	background-color: color-mix(in srgb, currentColor 15%, transparent);
+	outline-color: color-mix(in srgb, currentColor 40%, transparent);
+}
+
+/* Light + color variants checked */
+.juno-check-light.juno-check-primary.juno-check-checked {
+	background-color: color-mix(in srgb, var(--primary) 15%, transparent);
+	outline-color: color-mix(in srgb, var(--primary) 40%, transparent);
+}
+
+.juno-check-light.juno-check-accent.juno-check-checked {
+	background-color: color-mix(in srgb, var(--accent) 15%, transparent);
+	outline-color: color-mix(in srgb, var(--accent) 40%, transparent);
+}
+
+.juno-check-light.juno-check-error.juno-check-checked {
+	background-color: color-mix(in srgb, var(--error) 15%, transparent);
+	outline-color: color-mix(in srgb, var(--error) 40%, transparent);
+}
+
+.juno-check-light.juno-check-success.juno-check-checked {
+	background-color: color-mix(in srgb, var(--success) 15%, transparent);
+	outline-color: color-mix(in srgb, var(--success) 40%, transparent);
+}
+
+.juno-check-light.juno-check-warning.juno-check-checked {
+	background-color: color-mix(in srgb, var(--warning) 15%, transparent);
+	outline-color: color-mix(in srgb, var(--warning) 40%, transparent);
+}
+
+.juno-check-light.juno-check-info.juno-check-checked {
+	background-color: color-mix(in srgb, var(--info) 15%, transparent);
+	outline-color: color-mix(in srgb, var(--info) 40%, transparent);
+}
+
+/* ==================== */
+/* SOFT VARIANT         */
+/* ==================== */
+.juno-check-soft {
+	background-color: color-mix(in srgb, var(--base-content) 8%, transparent);
+	outline: none;
+}
+
+.juno-check-soft.juno-check-checked {
+	background-color: color-mix(in srgb, currentColor 20%, transparent);
+}
+
+/* Soft + color variants checked */
+.juno-check-soft.juno-check-primary.juno-check-checked {
+	background-color: color-mix(in srgb, var(--primary) 20%, transparent);
+}
+
+.juno-check-soft.juno-check-accent.juno-check-checked {
+	background-color: color-mix(in srgb, var(--accent) 20%, transparent);
+}
+
+.juno-check-soft.juno-check-error.juno-check-checked {
+	background-color: color-mix(in srgb, var(--error) 20%, transparent);
+}
+
+.juno-check-soft.juno-check-success.juno-check-checked {
+	background-color: color-mix(in srgb, var(--success) 20%, transparent);
+}
+
+.juno-check-soft.juno-check-warning.juno-check-checked {
+	background-color: color-mix(in srgb, var(--warning) 20%, transparent);
+}
+
+.juno-check-soft.juno-check-info.juno-check-checked {
+	background-color: color-mix(in srgb, var(--info) 20%, transparent);
+}
+
+/* ==================== */
+/* NATIVE VARIANT       */
+/* ==================== */
+.juno-checkbox-native {
+	cursor: pointer;
+	width: var(--check-size, 1.25rem);
+	height: var(--check-size, 1.25rem);
+}
+
+.juno-checkbox-native-sm {
+	--check-size: 1rem;
+}
+
+.juno-checkbox-native-md {
+	--check-size: 1.25rem;
+}
+
+.juno-checkbox-native-lg {
+	--check-size: 1.5rem;
+}

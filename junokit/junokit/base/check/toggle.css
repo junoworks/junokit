@@ -1,0 +1,298 @@
+.juno-toggle-wrapper {
+	position: relative;
+}
+
+.juno-toggle-input {
+	position: absolute;
+	opacity: 0;
+	width: 100%;
+	height: 100%;
+	cursor: pointer;
+	margin: 0;
+	z-index: 1;
+}
+
+.juno-toggle-input:disabled {
+	cursor: not-allowed;
+}
+
+.juno-toggle {
+	position: relative;
+	display: flex;
+	align-items: center;
+	border-radius: 9999px;
+	transition: background-color 75ms ease-in;
+}
+
+.juno-toggle-knob {
+	border-radius: 9999px;
+	transition: transform 75ms ease-in-out;
+}
+
+/* Disabled state - consistent across all variants */
+.juno-toggle-input:disabled + .juno-toggle {
+	opacity: 0.5;
+	pointer-events: none;
+}
+
+/* Sizes */
+.juno-toggle-sm {
+	width: 2rem;
+	height: 1.125rem;
+}
+
+.juno-toggle-sm .juno-toggle-knob {
+	width: 18px;
+	height: 18px;
+}
+
+.juno-toggle-sm.juno-toggle-checked .juno-toggle-knob {
+	transform: translateX(0.875rem);
+}
+
+.juno-toggle-md {
+	width: 2.5rem;
+	height: 1.3125rem;
+}
+
+.juno-toggle-md .juno-toggle-knob {
+	width: 21px;
+	height: 21px;
+}
+
+.juno-toggle-md.juno-toggle-checked .juno-toggle-knob {
+	transform: translateX(1.1875rem);
+}
+
+.juno-toggle-lg {
+	width: 3rem;
+	height: 1.5rem;
+}
+
+.juno-toggle-lg .juno-toggle-knob {
+	width: 24px;
+	height: 24px;
+}
+
+.juno-toggle-lg.juno-toggle-checked .juno-toggle-knob {
+	transform: translateX(1.5rem);
+}
+
+/* ==================== */
+/* SOLID VARIANT        */
+/* ==================== */
+.juno-toggle-solid {
+	background-color: color-mix(in srgb, currentColor 10%, transparent);
+}
+
+.juno-toggle-solid .juno-toggle-knob {
+	background-color: var(--base-0);
+	box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+	border: 2px solid color-mix(in srgb, currentColor 20%, transparent);
+}
+
+.juno-toggle-solid.juno-toggle-lg .juno-toggle-knob {
+	border-width: 2.5px;
+}
+
+.juno-toggle-solid.juno-toggle-checked {
+	background-color: currentColor;
+}
+
+.juno-toggle-solid.juno-toggle-checked .juno-toggle-knob {
+	border-color: currentColor;
+}
+
+/* Solid + color variants checked */
+.juno-toggle-solid.juno-toggle-primary.juno-toggle-checked {
+	background-color: var(--primary);
+}
+
+.juno-toggle-solid.juno-toggle-primary.juno-toggle-checked .juno-toggle-knob {
+	border-color: var(--primary);
+}
+
+.juno-toggle-solid.juno-toggle-accent.juno-toggle-checked {
+	background-color: var(--accent);
+}
+
+.juno-toggle-solid.juno-toggle-accent.juno-toggle-checked .juno-toggle-knob {
+	border-color: var(--accent);
+}
+
+.juno-toggle-solid.juno-toggle-error.juno-toggle-checked {
+	background-color: var(--error);
+}
+
+.juno-toggle-solid.juno-toggle-error.juno-toggle-checked .juno-toggle-knob {
+	border-color: var(--error);
+}
+
+.juno-toggle-solid.juno-toggle-success.juno-toggle-checked {
+	background-color: var(--success);
+}
+
+.juno-toggle-solid.juno-toggle-success.juno-toggle-checked .juno-toggle-knob {
+	border-color: var(--success);
+}
+
+.juno-toggle-solid.juno-toggle-warning.juno-toggle-checked {
+	background-color: var(--warning);
+}
+
+.juno-toggle-solid.juno-toggle-warning.juno-toggle-checked .juno-toggle-knob {
+	border-color: var(--warning);
+}
+
+.juno-toggle-solid.juno-toggle-info.juno-toggle-checked {
+	background-color: var(--info);
+}
+
+.juno-toggle-solid.juno-toggle-info.juno-toggle-checked .juno-toggle-knob {
+	border-color: var(--info);
+}
+
+/* ==================== */
+/* LIGHT VARIANT        */
+/* ==================== */
+.juno-toggle-light {
+	background-color: transparent;
+	outline: 1px solid color-mix(in srgb, currentColor 20%, transparent);
+	outline-offset: -1px;
+}
+
+.juno-toggle-light .juno-toggle-knob {
+	background-color: color-mix(in srgb, currentColor 30%, transparent);
+}
+
+.juno-toggle-light.juno-toggle-checked {
+	background-color: color-mix(in srgb, currentColor 15%, transparent);
+	outline-color: color-mix(in srgb, currentColor 40%, transparent);
+}
+
+.juno-toggle-light.juno-toggle-checked .juno-toggle-knob {
+	background-color: currentColor;
+}
+
+/* Light + color variants checked only */
+.juno-toggle-light.juno-toggle-primary.juno-toggle-checked {
+	background-color: color-mix(in srgb, var(--primary) 15%, transparent);
+	outline-color: color-mix(in srgb, var(--primary) 40%, transparent);
+}
+
+.juno-toggle-light.juno-toggle-primary.juno-toggle-checked .juno-toggle-knob {
+	background-color: var(--primary);
+}
+
+.juno-toggle-light.juno-toggle-accent.juno-toggle-checked {
+	background-color: color-mix(in srgb, var(--accent) 15%, transparent);
+	outline-color: color-mix(in srgb, var(--accent) 40%, transparent);
+}
+
+.juno-toggle-light.juno-toggle-accent.juno-toggle-checked .juno-toggle-knob {
+	background-color: var(--accent);
+}
+
+.juno-toggle-light.juno-toggle-error.juno-toggle-checked {
+	background-color: color-mix(in srgb, var(--error) 15%, transparent);
+	outline-color: color-mix(in srgb, var(--error) 40%, transparent);
+}
+
+.juno-toggle-light.juno-toggle-error.juno-toggle-checked .juno-toggle-knob {
+	background-color: var(--error);
+}
+
+.juno-toggle-light.juno-toggle-success.juno-toggle-checked {
+	background-color: color-mix(in srgb, var(--success) 15%, transparent);
+	outline-color: color-mix(in srgb, var(--success) 40%, transparent);
+}
+
+.juno-toggle-light.juno-toggle-success.juno-toggle-checked .juno-toggle-knob {
+	background-color: var(--success);
+}
+
+.juno-toggle-light.juno-toggle-warning.juno-toggle-checked {
+	background-color: color-mix(in srgb, var(--warning) 15%, transparent);
+	outline-color: color-mix(in srgb, var(--warning) 40%, transparent);
+}
+
+.juno-toggle-light.juno-toggle-warning.juno-toggle-checked .juno-toggle-knob {
+	background-color: var(--warning);
+}
+
+.juno-toggle-light.juno-toggle-info.juno-toggle-checked {
+	background-color: color-mix(in srgb, var(--info) 15%, transparent);
+	outline-color: color-mix(in srgb, var(--info) 40%, transparent);
+}
+
+.juno-toggle-light.juno-toggle-info.juno-toggle-checked .juno-toggle-knob {
+	background-color: var(--info);
+}
+
+/* ==================== */
+/* SOFT VARIANT         */
+/* ==================== */
+.juno-toggle-soft {
+	background-color: color-mix(in srgb, currentColor 8%, transparent);
+}
+
+.juno-toggle-soft .juno-toggle-knob {
+	background-color: color-mix(in srgb, currentColor 25%, transparent);
+}
+
+.juno-toggle-soft.juno-toggle-checked {
+	background-color: color-mix(in srgb, currentColor 20%, transparent);
+}
+
+.juno-toggle-soft.juno-toggle-checked .juno-toggle-knob {
+	background-color: currentColor;
+}
+
+/* Soft + color variants checked only */
+.juno-toggle-soft.juno-toggle-primary.juno-toggle-checked {
+	background-color: color-mix(in srgb, var(--primary) 20%, transparent);
+}
+
+.juno-toggle-soft.juno-toggle-primary.juno-toggle-checked .juno-toggle-knob {
+	background-color: var(--primary);
+}
+
+.juno-toggle-soft.juno-toggle-accent.juno-toggle-checked {
+	background-color: color-mix(in srgb, var(--accent) 20%, transparent);
+}
+
+.juno-toggle-soft.juno-toggle-accent.juno-toggle-checked .juno-toggle-knob {
+	background-color: var(--accent);
+}
+
+.juno-toggle-soft.juno-toggle-error.juno-toggle-checked {
+	background-color: color-mix(in srgb, var(--error) 20%, transparent);
+}
+
+.juno-toggle-soft.juno-toggle-error.juno-toggle-checked .juno-toggle-knob {
+	background-color: var(--error);
+}
+
+.juno-toggle-soft.juno-toggle-success.juno-toggle-checked {
+	background-color: color-mix(in srgb, var(--success) 20%, transparent);
+}
+
+.juno-toggle-soft.juno-toggle-success.juno-toggle-checked .juno-toggle-knob {
+	background-color: var(--success);
+}
+
+.juno-toggle-soft.juno-toggle-warning.juno-toggle-checked {
+	background-color: color-mix(in srgb, var(--warning) 20%, transparent);
+}
+
+.juno-toggle-soft.juno-toggle-warning.juno-toggle-checked .juno-toggle-knob {
+	background-color: var(--warning);
+}
+
+.juno-toggle-soft.juno-toggle-info.juno-toggle-checked {
+	background-color: color-mix(in srgb, var(--info) 20%, transparent);
+}
+
+.juno-toggle-soft.juno-toggle-info.juno-toggle-checked .juno-toggle-knob {
+	background-color: var(--info);
+}
