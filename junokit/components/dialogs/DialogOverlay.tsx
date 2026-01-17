@@ -37,6 +37,7 @@ export function DialogOverlay(props: DialogOverlayProps) {
 				backgroundColor,
 				backdropFilter,
 				WebkitBackdropFilter: backdropFilter /* For Safari compatibility */,
+				pointerEvents: backdrop === "none" ? "none" : "auto",
 				...style,
 			}}
 		>
