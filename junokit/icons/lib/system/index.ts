@@ -26,4 +26,3 @@ export { SwitchOff } from "./SwitchOff";
 export { SwitchOn } from "./SwitchOn";
 export { SystemRestart } from "./SystemRestart";
 export { SystemShut } from "./SystemShut";
-export { Window } from "./Window";

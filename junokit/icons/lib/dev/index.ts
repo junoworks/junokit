@@ -15,3 +15,4 @@ export { Kanban } from "./Kanban";
 export { Linux } from "./Linux";
 export { Server } from "./Server";
 export { ServerSolid } from "./ServerSolid";
+export { Terminal } from "./Terminal";
