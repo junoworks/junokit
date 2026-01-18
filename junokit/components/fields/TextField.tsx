@@ -16,7 +16,7 @@ export type TextFieldDataProps = {
 	suffix?: string;
 	inputProps?: InputProps;
 	message?: React.ReactNode;
-};
+} & React.HTMLAttributes<HTMLElement>;
 
 export type TextFieldProps = TextFieldDataProps & Omit<React.HTMLAttributes<HTMLDivElement>, keyof TextFieldDataProps>;
 

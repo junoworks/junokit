@@ -6,6 +6,7 @@ export type NativeSelectProps = {
 	variant?: InputVariant;
 	color?: InputColor;
 	radius?: InputRadius;
+	hideChevron?: boolean;
 } & Omit<React.SelectHTMLAttributes<HTMLSelectElement>, "size">;
 
 const defaults = {
@@ -15,7 +16,7 @@ const defaults = {
 };
 
 const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>((props, ref) => {
-	const { size, variant, color, radius, className, children, ...rest } = { ...defaults, ...props };
+	const { size, variant, color, radius, hideChevron, className, children, ...rest } = { ...defaults, ...props };
 
 	const classes = [
 		"juno-select",
@@ -29,8 +30,10 @@ const NativeSelect = forwardRef<HTMLSelectElement, NativeSelectProps>((props, re
 		.filter(Boolean)
 		.join(" ");
 
+	const style = hideChevron ? { backgroundImage: "none", paddingRight: undefined } : undefined;
+
 	return (
-		<select {...rest} ref={ref} className={classes}>
+		<select {...rest} ref={ref} className={classes} style={style}>
 			{children}
 		</select>
 	);

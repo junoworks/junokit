@@ -66,13 +66,13 @@
 
 	.juno-input-light:hover:not(:disabled):not(:focus):not(:focus-within) {
 		outline-color: color-mix(in srgb, var(--input-color) 30%, transparent);
-		background: color-mix(in srgb, var(--input-color) 2%, transparent);
+		background-color: color-mix(in srgb, var(--input-color) 2%, transparent);
 	}
 
 	.juno-input-light:focus,
 	.juno-input-light:focus-within {
 		outline-color: var(--input-color);
-		background: color-mix(in srgb, var(--input-color) 2%, transparent);
+		background-color: color-mix(in srgb, var(--input-color) 2%, transparent);
 		box-shadow: 0 0 0 var(--input-ring-size, 2px)
 			color-mix(in srgb, var(--input-color) var(--input-ring-opacity), transparent);
 	}
@@ -109,7 +109,7 @@
 
 	.juno-input-soft:focus,
 	.juno-input-soft:focus-within {
-		background: color-mix(in srgb, var(--input-color) 12%, transparent);
+		background-color: color-mix(in srgb, var(--input-color) 12%, transparent);
 	}
 
 	/* ==================== VARIANT: UNSTYLED ==================== */
