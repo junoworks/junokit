@@ -13,7 +13,7 @@
 	/* Fonts */
 	--font-body: "Inter", sans-serif;
 	--font-accent: "Onest", sans-serif;
-	--font-mono: "IBM Plex Mono", monospace;
+	--font-mono: "Times New Roman", monospace;
 	--font-weight-offset: 0; /* Changes font weights */
 	--iconset: iconoir; /* 'iconoir' | 'material' | 'ionic' */
 
