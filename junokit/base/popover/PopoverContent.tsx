@@ -1,14 +1,6 @@
-import {
-	autoUpdate,
-	flip,
-	offset,
-	type Placement,
-	shift,
-	size as sizeMiddleware,
-	useFloating,
-} from "@floating-ui/react-dom";
 import { type ReactNode, type RefObject, useContext, useEffect, useLayoutEffect, useRef } from "react";
 import { createPortal } from "react-dom";
+import { autoUpdate, flip, offset, type Placement, shift, size as sizeMiddleware, useFloating } from "./floating";
 import { PopoverContext, type PopoverSize } from "./PopoverContext";
 
 type Side = "top" | "bottom" | "left" | "right";
