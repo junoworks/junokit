@@ -1,4 +1,3 @@
-import { addDays, isSameMonth, startOfMonth } from "date-fns";
 import {
 	type ChangeEvent,
 	forwardRef,
@@ -13,6 +12,7 @@ import { Button } from "../../";
 import { DaysGrid, MonthNavigation, WeekdaysRow } from "./parts";
 import type { CalendarColor, CalendarRadius, CalendarSize, WeekStart } from "./types";
 import { formatDateForInput, parseDateFromInput } from "./utils";
+import { addDays, isSameMonth, startOfMonth } from "./utils/dateHelpers";
 
 type InputProps = Omit<React.InputHTMLAttributes<HTMLInputElement>, "onChange" | "value" | "size">;
 

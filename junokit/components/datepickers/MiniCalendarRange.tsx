@@ -1,8 +1,8 @@
-import { addMonths, isBefore, isEqual, startOfMonth, subMonths } from "date-fns";
 import { forwardRef, useId, useImperativeHandle, useRef, useState } from "react";
 import { CalendarPanelRange } from "./parts";
 import type { CalendarColor, CalendarRadius, CalendarSize, DateRange, WeekStart } from "./types";
 import { useDateRangeSync } from "./utils";
+import { addMonths, isBefore, isEqual, startOfMonth, subMonths } from "./utils/dateHelpers";
 
 type MiniCalendarRangeSpecificProps = {
 	size?: CalendarSize;

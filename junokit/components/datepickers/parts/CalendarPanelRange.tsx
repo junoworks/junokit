@@ -1,7 +1,7 @@
-import { addMonths, subMonths } from "date-fns";
 import { Button } from "../../../";
 import { ChevronLeft, ChevronRight } from "../../../icons";
 import type { CalendarColor, CalendarRadius, CalendarSize, WeekStart } from "../types";
+import { addMonths, subMonths } from "../utils/dateHelpers";
 import { DaysGridRange } from "./DaysGridRange";
 import { MonthYearSelector } from "./MonthYearSelector";
 import { WeekdaysRow } from "./WeekdaysRow";

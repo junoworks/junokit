@@ -1,3 +1,5 @@
+import type { CalendarColor, CalendarRadius, WeekStart } from "../types";
+import { getRadiusClass, getWeekStartOptions, isCircularRadius } from "../utils";
 import {
 	addDays,
 	endOfMonth,
@@ -8,9 +10,7 @@ import {
 	isToday,
 	startOfMonth,
 	startOfWeek,
-} from "date-fns";
-import type { CalendarColor, CalendarRadius, WeekStart } from "../types";
-import { getRadiusClass, getWeekStartOptions, isCircularRadius } from "../utils";
+} from "../utils/dateHelpers";
 
 type DaysGridProps = {
 	currentMonth: Date;

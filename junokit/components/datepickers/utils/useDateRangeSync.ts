@@ -1,6 +1,6 @@
-import { isSameMonth, startOfMonth } from "date-fns";
 import { useEffect, useRef } from "react";
 import type { DateRange } from "../types";
+import { isSameMonth, startOfMonth } from "./dateHelpers";
 
 type UseDateRangeSyncParams = {
 	value: DateRange | null | undefined;

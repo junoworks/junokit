@@ -1,6 +1,6 @@
-import { addDays, addMonths, endOfMonth, endOfWeek, startOfMonth, startOfWeek, subMonths } from "date-fns";
 import type { PresetValue } from "../lib/presets";
 import type { DateRange } from "../types";
+import { addDays, addMonths, endOfMonth, endOfWeek, startOfMonth, startOfWeek, subMonths } from "./dateHelpers";
 
 /** Format Date object to yyyy-MM-dd string for input type="date" */
 export function formatDateForInput(date: Date | null): string {
@@ -25,7 +25,6 @@ export function getWeekdayLabels(weekStart: "Monday" | "Sunday"): string[] {
 		: ["Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"];
 }
 
-/** Get week start options for date-fns functions */
 export function getWeekStartOptions(weekStart: "Monday" | "Sunday"): { weekStartsOn: 0 | 1 } {
 	return weekStart === "Sunday" ? { weekStartsOn: 0 } : { weekStartsOn: 1 };
 }
@@ -80,12 +79,7 @@ export function getYearRange(centerYear: number, range = 50): number[] {
 }
 
 /** Navigate a grid with arrow keys. Returns new index or null if navigation not possible. */
-export function navigateGrid(
-	currentIndex: number,
-	key: string,
-	columns: number,
-	totalItems: number
-): number | null {
+export function navigateGrid(currentIndex: number, key: string, columns: number, totalItems: number): number | null {
 	let newIndex = currentIndex;
 
 	switch (key) {

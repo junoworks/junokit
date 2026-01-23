@@ -1,7 +1,7 @@
-import { addMonths, subMonths } from "date-fns";
 import { Button } from "../../../";
 import { ChevronLeft, ChevronRight } from "../../../icons";
 import type { CalendarSize } from "../types";
+import { addMonths, subMonths } from "../utils/dateHelpers";
 import { MonthYearSelector } from "./MonthYearSelector";
 
 type MonthNavigationProps = {
