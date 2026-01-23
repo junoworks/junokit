@@ -131,25 +131,63 @@ function DateTime(props: DateTimeProps) {
 	try {
 		const options: Intl.DateTimeFormatOptions = {};
 
-		// Configure options based on type and format
-		if (type === "date" || type === "datetime") {
-			if (["short", "medium", "long", "full"].includes(format)) {
-				options.dateStyle = format as any;
-			}
-		}
-
-		if (type === "time" || type === "datetime") {
-			if (["short", "medium", "long", "full"].includes(format)) {
-				options.timeStyle = format as any;
-			}
-		}
-
 		if (timeZone) {
 			options.timeZone = timeZone;
 		}
 
+		// dateStyle/timeStyle cannot be combined with timeZoneName, so use explicit options when showTimeZone is true
 		if (showTimeZone) {
+			// Use explicit component options instead of dateStyle/timeStyle
+			if (type === "date" || type === "datetime") {
+				if (format === "short") {
+					options.year = "2-digit";
+					options.month = "numeric";
+					options.day = "numeric";
+				} else if (format === "medium") {
+					options.year = "numeric";
+					options.month = "short";
+					options.day = "numeric";
+				} else if (format === "long") {
+					options.year = "numeric";
+					options.month = "long";
+					options.day = "numeric";
+				} else if (format === "full") {
+					options.year = "numeric";
+					options.month = "long";
+					options.day = "numeric";
+					options.weekday = "long";
+				}
+			}
+
+			if (type === "time" || type === "datetime") {
+				if (format === "short") {
+					options.hour = "numeric";
+					options.minute = "2-digit";
+				} else if (format === "medium") {
+					options.hour = "numeric";
+					options.minute = "2-digit";
+					options.second = "2-digit";
+				} else if (format === "long" || format === "full") {
+					options.hour = "numeric";
+					options.minute = "2-digit";
+					options.second = "2-digit";
+				}
+			}
+
 			options.timeZoneName = "short";
+		} else {
+			// Use dateStyle/timeStyle when timeZoneName is not needed
+			if (type === "date" || type === "datetime") {
+				if (["short", "medium", "long", "full"].includes(format)) {
+					options.dateStyle = format as any;
+				}
+			}
+
+			if (type === "time" || type === "datetime") {
+				if (["short", "medium", "long", "full"].includes(format)) {
+					options.timeStyle = format as any;
+				}
+			}
 		}
 
 		const formatter = new Intl.DateTimeFormat(locale, options);
