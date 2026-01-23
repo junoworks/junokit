@@ -170,7 +170,7 @@ export default function StepperArray(props: StepperArrayProps) {
 				<PopoverTrigger>
 					<SelectBox id={fieldId} size={size} variant={variant} color={color} radius={radius} onKeyDown={handleKeyDown}>
 						{icon}
-						<span className={isPlaceholder ? "opacity-60" : ""}>{displayLabel}</span>
+						<span className={`truncate flex-1 min-w-0 ${isPlaceholder ? "opacity-60" : ""}`}>{displayLabel}</span>
 						<DirectionalButton
 							size={buttonSize}
 							direction="vertical"
@@ -183,7 +183,7 @@ export default function StepperArray(props: StepperArrayProps) {
 						/>
 					</SelectBox>
 				</PopoverTrigger>
-				<PopoverContent matchTriggerWidth className="flex flex-col overflow-y-auto max-h-60">
+				<PopoverContent matchTriggerWidth className="flex flex-col overflow-y-auto max-h-60 max-w-[200px]">
 					{options.map((option, index) => (
 						<SelectOption
 							key={option.value}

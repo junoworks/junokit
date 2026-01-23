@@ -35,7 +35,7 @@ const SelectOption = forwardRef<HTMLDivElement, SelectOptionProps>((props, ref) 
 		<div ref={ref} role="option" aria-selected={isSelected} className={classes} {...rest}>
 			{hasCheckIcon &&
 				(isSelected ? <Check size="1em" /> : <span style={{ width: "1em", height: "1em", flexShrink: 0 }} />)}
-			<span className="flex-1 min-w-0 flex items-center gap-[inherit]">{children}</span>
+			<span className="flex-1 min-w-0 truncate">{children}</span>
 		</div>
 	);
 });
