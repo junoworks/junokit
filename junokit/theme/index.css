@@ -46,6 +46,12 @@ body {
 	font-family: var(--font-body);
 }
 
+
+/* Lock body scroll when modal overlay is open */
+body:has(.juno-modal-overlay) {
+	overflow: hidden;
+  }
+
 /* can be useful for preventing horizontal swipe navigation 
 uncomment if needed
 html, body {

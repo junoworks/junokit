@@ -7,181 +7,170 @@ import { Calendar, XMark } from "../../icons";
 import { formatDisplayDate } from "../fields/utils/dateUtils";
 import MiniCalendar from "./MiniCalendar";
 import type { CalendarColor } from "./types";
+import { parseDateFromInput } from "./utils";
 
 export type DatePickerDataProps = {
-	variant?: Exclude<InputVariant, "flat">;
-	color?: InputColor;
-	size?: InputSize;
-	radius?: InputRadius;
-	label?: React.ReactNode;
-	labelPosition?: "top" | "left";
-	message?: React.ReactNode;
-	placeholder?: string;
-	dateFormat?: string;
-	showClearButton?: boolean;
-	closeOnSelect?: boolean;
-	value?: Date | null;
-	id?: string;
+  variant?: Exclude<InputVariant, "flat">;
+  color?: InputColor;
+  size?: InputSize;
+  radius?: InputRadius;
+  label?: React.ReactNode;
+  labelPosition?: "top" | "left";
+  message?: React.ReactNode;
+  placeholder?: string;
+  dateFormat?: string;
+  showClearButton?: boolean;
+  closeOnSelect?: boolean;
+  value?: Date | null;
+  id?: string;
 };
 
 export type DatePickerProps = DatePickerDataProps & {
-	onChange?: (date: Date | null) => void;
-	onClear?: () => void;
-	inputProps?: Omit<React.InputHTMLAttributes<HTMLInputElement>, "onChange" | "value" | "size">;
+  onChange?: (date: Date | null) => void;
+  onClear?: () => void;
+  inputProps?: Omit<React.InputHTMLAttributes<HTMLInputElement>, "onChange" | "value" | "size">;
 } & Omit<React.HTMLAttributes<HTMLDivElement>, "onChange">;
 
 export const defaults = {
-	size: "medium" as const,
-	variant: "light" as const,
-	color: undefined,
-	label: undefined,
-	labelPosition: "top" as const,
-	message: undefined,
-	placeholder: "Select date",
-	dateFormat: "dd MMM, yyyy",
-	showClearButton: true,
-	closeOnSelect: true,
+  size: "medium" as const,
+  variant: "light" as const,
+  color: undefined,
+  label: undefined,
+  labelPosition: "top" as const,
+  message: undefined,
+  placeholder: "Select date",
+  dateFormat: "dd MMM, yyyy",
+  showClearButton: true,
+  closeOnSelect: true,
 };
 
 export default function DatePicker(props: DatePickerProps) {
-	const {
-		size,
-		variant,
-		color,
-		radius,
-		label,
-		labelPosition,
-		message,
-		placeholder,
-		dateFormat,
-		showClearButton,
-		closeOnSelect,
-		value,
-		onChange,
-		onClear,
-		inputProps,
-		id,
-		...rest
-	} = { ...defaults, ...props };
+  const { size, variant, color, radius, label, labelPosition, message, placeholder, dateFormat, showClearButton, closeOnSelect, value, onChange, onClear, inputProps, id, ...rest } = {
+    ...defaults,
+    ...props,
+  };
 
-	const generatedId = useId();
-	const fieldId = id || generatedId;
+  const generatedId = useId();
+  const fieldId = id || generatedId;
 
-	const [selectedDate, setSelectedDate] = useState<Date | null>(value === undefined ? null : value);
-	const [isOpen, setIsOpen] = useState(false);
+  const [selectedDate, setSelectedDate] = useState<Date | null>(value === undefined ? null : value);
+  const [isOpen, setIsOpen] = useState(false);
 
-	useEffect(() => {
-		setSelectedDate(value === undefined ? null : value);
-	}, [value]);
+  useEffect(() => {
+    setSelectedDate(value === undefined ? null : value);
+  }, [value]);
 
-	const handleDateChange = (newDate: Date | null) => {
-		setSelectedDate(newDate);
-		onChange?.(newDate);
-		if (newDate && closeOnSelect) {
-			setIsOpen(false);
-		}
-	};
+  const handleDateChange = (newDate: Date | null) => {
+    if (newDate) {
+      // Validate against min/max constraints from inputProps (parse as local dates)
+      const min = inputProps?.min ? parseDateFromInput(String(inputProps.min)) : null;
+      const max = inputProps?.max ? parseDateFromInput(String(inputProps.max)) : null;
 
-	const handleClear = (e: React.MouseEvent<HTMLButtonElement>) => {
-		e.preventDefault();
-		e.stopPropagation();
-		setSelectedDate(null);
-		setIsOpen(false);
-		if (onClear) {
-			onClear();
-		} else {
-			onChange?.(null);
-		}
-	};
+      const dateToCheck = new Date(newDate);
+      dateToCheck.setHours(0, 0, 0, 0);
 
-	const displayLabel = selectedDate ? formatDisplayDate(selectedDate, dateFormat) : placeholder;
-	const isPlaceholder = selectedDate === null;
+      // Reject dates outside constraints
+      if (min && dateToCheck < min) {
+        return;
+      }
+      if (max && dateToCheck > max) {
+        return;
+      }
+    }
 
-	const iconSize = {
-		small: "16px",
-		medium: "20px",
-		large: "24px",
-	}[size] as string;
+    setSelectedDate(newDate);
+    onChange?.(newDate);
+    if (newDate && closeOnSelect) {
+      setIsOpen(false);
+    }
+  };
 
-	const clearButtonSize = {
-		small: "mini",
-		medium: "small",
-		large: "medium",
-	}[size] as "mini" | "small" | "medium";
+  const handleClear = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setSelectedDate(null);
+    setIsOpen(false);
+    if (onClear) {
+      onClear();
+    } else {
+      onChange?.(null);
+    }
+  };
 
-	const clearButtonOffset = {
-		small: "-mr-1",
-		medium: "-mr-1.5",
-		large: "-mr-2",
-	}[size];
+  const displayLabel = selectedDate ? formatDisplayDate(selectedDate, dateFormat) : placeholder;
+  const isPlaceholder = selectedDate === null;
 
-	const minWidth = {
-		small: 140,
-		medium: 180,
-		large: 220,
-	}[size];
+  const iconSize = {
+    small: "16px",
+    medium: "20px",
+    large: "24px",
+  }[size] as string;
 
-	const calendarIcon = <Calendar size={iconSize} />;
+  const clearButtonSize = {
+    small: "mini",
+    medium: "small",
+    large: "medium",
+  }[size] as "mini" | "small" | "medium";
 
-	const clearButton = showClearButton && selectedDate && (
-		<Button
-			icon={<XMark size={iconSize} />}
-			size={clearButtonSize}
-			variant="ghost"
-			onMouseDown={handleClear}
-			className={clearButtonOffset}
-		/>
-	);
+  const clearButtonOffset = {
+    small: "-mr-1",
+    medium: "-mr-1.5",
+    large: "-mr-2",
+  }[size];
 
-	const popoverContentClasses = {
-		small: "!p-2 !rounded-sm",
-		medium: "!p-3 !rounded-md",
-		large: "!p-3 !rounded-lg",
-	}[size] as string;
+  const minWidth = {
+    small: 140,
+    medium: 180,
+    large: 220,
+  }[size];
 
-	return (
-		<InputGroup size={size} labelPosition={labelPosition} hasLabel={!!label} {...rest}>
-			{label && (
-				<InputLabel size={size} color={color} htmlFor={fieldId}>
-					{label}
-				</InputLabel>
-			)}
-			<Popover size={size} open={isOpen} onOpenChange={setIsOpen}>
-				<PopoverTrigger>
-					<InputBox
-						id={fieldId}
-						size={size}
-						variant={variant}
-						// color={color}
-						radius={radius}
-						className="cursor-pointer"
-						style={{ minWidth }}
-					>
-						{calendarIcon}
-						<span className={`flex-1 select-none ${isPlaceholder ? "opacity-60" : ""}`}>{displayLabel}</span>
-						{clearButton}
-					</InputBox>
-				</PopoverTrigger>
-				<PopoverContent className={`${popoverContentClasses} overflow-visible`}>
-					<MiniCalendar
-						value={selectedDate}
-						onChange={handleDateChange}
-						size={size === "large" ? "medium" : size}
-						inputProps={inputProps}
-						color={color as CalendarColor}
-					/>
-				</PopoverContent>
-			</Popover>
-			{message && (
-				<>
-					{label && labelPosition === "left" && <div />}
-					<InputMessage size={size} color={color}>
-						{message}
-					</InputMessage>
-				</>
-			)}
-		</InputGroup>
-	);
+  const calendarIcon = <Calendar size={iconSize} />;
+
+  const clearButton = showClearButton && selectedDate && <Button icon={<XMark size={iconSize} />} size={clearButtonSize} variant="ghost" onMouseDown={handleClear} className={clearButtonOffset} />;
+
+  const popoverContentClasses = {
+    small: "!p-2 !rounded-sm",
+    medium: "!p-3 !rounded-md",
+    large: "!p-3 !rounded-lg",
+  }[size] as string;
+
+  return (
+    <InputGroup size={size} labelPosition={labelPosition} hasLabel={!!label} {...rest}>
+      {label && (
+        <InputLabel size={size} color={color} htmlFor={fieldId}>
+          {label}
+        </InputLabel>
+      )}
+      <Popover size={size} open={isOpen} onOpenChange={setIsOpen}>
+        <PopoverTrigger>
+          <InputBox
+            id={fieldId}
+            size={size}
+            variant={variant}
+            // color={color}
+            radius={radius}
+            className="cursor-pointer"
+            style={{ minWidth }}
+          >
+            {calendarIcon}
+            <span className={`flex-1 select-none ${isPlaceholder ? "opacity-60" : ""}`}>{displayLabel}</span>
+            {clearButton}
+          </InputBox>
+        </PopoverTrigger>
+        <PopoverContent className={`${popoverContentClasses} overflow-visible`}>
+          <MiniCalendar value={selectedDate} onChange={handleDateChange} size={size === "large" ? "medium" : size} inputProps={inputProps} color={color as CalendarColor} />
+        </PopoverContent>
+      </Popover>
+      {message && (
+        <>
+          {label && labelPosition === "left" && <div />}
+          <InputMessage size={size} color={color}>
+            {message}
+          </InputMessage>
+        </>
+      )}
+    </InputGroup>
+  );
 }
 
 DatePicker.defaults = defaults;

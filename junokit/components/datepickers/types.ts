@@ -4,6 +4,6 @@ export type CalendarRadius = "none" | "sm" | "md" | "lg" | "xl" | "full";
 export type WeekStart = "Monday" | "Sunday";
 
 export type DateRange = {
-	from: Date | null;
-	to: Date | null;
+  from: Date | null;
+  to: Date | null;
 };

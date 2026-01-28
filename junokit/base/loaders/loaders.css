@@ -1,0 +1,147 @@
+@layer components {
+	/* Base loader styles using CSS variables */
+	/* Set --loader-color and --loader-opacity via inline styles */
+
+	/* Spinner */
+	.loader-spinner {
+		width: 1em;
+		height: 1em;
+		border-radius: 9999px;
+		border-width: 0.125em;
+		border-style: solid;
+		border-color: transparent;
+		border-top-color: var(--loader-color);
+		opacity: var(--loader-opacity);
+	}
+
+	.loader-spinner-track {
+		width: 100%;
+		height: 100%;
+		border-radius: 9999px;
+		outline-width: 0.125em;
+		outline-style: solid;
+		outline-color: color-mix(in srgb, var(--loader-color) 20%, transparent);
+	}
+
+	/* Ping */
+	.loader-ping {
+		position: relative;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 1em;
+		height: 1em;
+		opacity: var(--loader-opacity);
+	}
+
+	.loader-ping-wave {
+		position: absolute;
+		inset: 0;
+		margin: auto;
+		display: inline-flex;
+		height: 50%;
+		width: 50%;
+		border-radius: 9999px;
+		background-color: var(--loader-color);
+	}
+
+	.loader-ping-dot {
+		position: relative;
+		display: inline-flex;
+		height: 50%;
+		width: 50%;
+		border-radius: 9999px;
+		background-color: var(--loader-color);
+	}
+
+	/* Dots (typing and pulse) */
+	.loader-dots {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		width: 1em;
+		height: 1em;
+		opacity: var(--loader-opacity);
+	}
+
+	.loader-dot {
+		width: 0.25em;
+		height: 0.25em;
+		border-radius: 9999px;
+		background-color: var(--loader-color);
+	}
+
+	/* Beat */
+	.loader-beat {
+		position: relative;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 1em;
+		height: 1em;
+		opacity: var(--loader-opacity);
+	}
+
+	.loader-beat-dot {
+		position: relative;
+		display: inline-flex;
+		height: 0.75em;
+		width: 0.75em;
+		border-radius: 9999px;
+		background-color: var(--loader-color);
+	}
+
+	/* Bars */
+	.loader-bars {
+		position: relative;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 1em;
+		height: 1em;
+		opacity: var(--loader-opacity);
+	}
+
+	.loader-bar {
+		position: absolute;
+		left: 50%;
+		top: 0;
+		width: 0.12em;
+		height: 0.3em;
+		border-radius: 9999px;
+		background-color: var(--loader-color);
+		transform-origin: 50% 170%;
+	}
+
+	/* Animations */
+	@keyframes typing-bounce {
+		0%,
+		100% {
+			transform: translateY(0);
+		}
+		50% {
+			transform: translateY(-35%);
+		}
+	}
+
+	@keyframes bars-fade {
+		0%,
+		100% {
+			opacity: 1;
+		}
+		50% {
+			opacity: 0.3;
+		}
+	}
+
+	@keyframes heartbeat {
+		0%,
+		100% {
+			transform: scale(1);
+		}
+		50% {
+			transform: scale(1.15);
+		}
+	}
+}
