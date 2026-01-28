@@ -1,12 +1,12 @@
 import type { LoaderProps } from "./types";
 import { defaults } from "./types";
-import { Spinner } from "./Spinner";
-import { Ping } from "./Ping";
-import { TypingDots } from "./TypingDots";
-import { Dots } from "./Dots";
-import { Beat } from "./Beat";
-import { Bars } from "./Bars";
-import "./loaders.css";
+import { Spinner } from "./variants/Spinner";
+import { Ping } from "./variants/Ping";
+import { TypingDots } from "./variants/TypingDots";
+import { Dots } from "./variants/Dots";
+import { Beat } from "./variants/Beat";
+import { Bars } from "./variants/Bars";
+import "./variants/loaders.css";
 
 export type { LoaderProps };
 

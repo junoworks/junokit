@@ -1,5 +1,5 @@
-import type React from "react";
-import { makeTailwindPadding } from "../../../base/containers/utils";
+import type React from "react";	
+import { makeTailwindPadding } from "../utils";
 import { type LayoutPaddingProps, processLayoutPadding } from "../../../utils/spacing";
 
 export type MainWrapperProps = {

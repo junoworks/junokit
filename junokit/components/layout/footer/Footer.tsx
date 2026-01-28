@@ -1,8 +1,8 @@
-import type { Gap } from "../../../base/containers/types";
+import type { Gap } from "../types";
 import { emptyPaddingDefaults, type LayoutPaddingProps, processLayoutPadding } from "../../../utils/spacing";
 import type { SpacingPreset } from "../types";
 import "../layout.css";
-import { makeTailwindMinHeight } from "../../../base/containers/utils";
+import { makeTailwindMinHeight } from "../utils";
 import FooterWrapper from "./FooterWrapper";
 
 export type FooterProps = {

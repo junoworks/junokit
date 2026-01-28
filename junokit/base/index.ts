@@ -1,7 +1,6 @@
 export * from "./alert";
 export * from "./button";
 export * from "./check";
-export * from "./containers";
 export * from "./indicators";
 export * from "./input";
 export * from "./media";

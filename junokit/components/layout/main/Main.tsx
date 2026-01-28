@@ -1,9 +1,9 @@
-import type { Corners, Gap } from "../../../base/containers/types";
+import type { Corners, Gap } from "../types";
 import { type ExtendedColor, fontColorMap, resolveColor } from "../../../utils/colors";
 import { emptyPaddingDefaults, type LayoutPaddingProps, processLayoutPadding } from "../../../utils/spacing";
 import type { SpacingPreset } from "../types";
 import "../layout.css";
-import { makeTailwindPadding } from "../../../base/containers/utils";
+import { makeTailwindPadding } from "../utils";
 import MainWrapper from "./MainWrapper";
 
 type Direction = "column" | "row";

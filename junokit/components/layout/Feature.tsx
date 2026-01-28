@@ -1,5 +1,5 @@
-import type { Gap } from "../../base/containers/types";
-import { makeTailwindPadding } from "../../base/containers/utils";
+import type { Gap } from "./types";
+import { makeTailwindPadding } from "./utils";
 import { type ExtendedColor, fontColorMap, resolveColor } from "../../utils/colors";
 import { emptyPaddingDefaults, type LayoutPaddingProps, processLayoutPadding } from "../../utils/spacing";
 import type { SpacingPreset } from "./types";

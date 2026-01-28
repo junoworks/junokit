@@ -1,5 +1,5 @@
-import type { LoaderProps } from "./types";
-import { defaults, resolveColorValue } from "./types";
+import type { LoaderProps } from "../types";
+import { defaults, resolveColorValue } from "../types";
 
 export function Ping(props: LoaderProps) {
 	const { size, color, opacity, pause, className = "", style, ...rest } = { ...defaults, ...props };
