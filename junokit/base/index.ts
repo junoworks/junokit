@@ -4,6 +4,7 @@ export * from "./check";
 export * from "./indicators";
 export * from "./input";
 export * from "./media";
+export * from "./brand";
 export * from "./popover";
 export * from "./profile";
 export * from "./radio";
